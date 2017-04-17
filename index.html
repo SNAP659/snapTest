@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>编程猫数码世界大冒险</title>
+        <link rel="shortcut icon" href="icon2.ico">
+        <link rel="stylesheet" href="css/material-store.css"/>
+        <link rel="stylesheet" href="css/classwindow.css"/>
+        <link rel="stylesheet" href="css/iframe-tutorial.css"/>
+        <link rel="stylesheet" href="css/user-info-menu.css"/>
+        <link rel="stylesheet" href="ide/css/savingMessage.css"/>
+        <link rel="stylesheet" href="css/actor-editor.css"/>
+        <link rel="stylesheet" href="css/cat-btn.css">
+        <link rel="stylesheet" href="https://o2n0qxlrf.qnssl.com/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/ide-dialog.css"/>
+        <link rel="stylesheet" href="css/dist/ide.min.css"/>
+        <link rel="stylesheet" href="css/backpack.css"/>
+        <style>
+            [v-cloak] {
+                display: none;
+            }
+        </style>
+        <script src="https://o2n0qxlrf.qnssl.com/jquery2-1-3.min.js"></script>
+        <script src="https://o2n0qxlrf.qnssl.com/layzr1-4-3.min.js"></script>
+        <script src="https://o2n0qxlrf.qnssl.com/eventemitter.min.js"></script>
+        <script type="text/javascript" src="build/js/snap/morphic.js"></script>
+        <script type="text/javascript" src="build/js/snap/widgets.js"></script>
+        <script type="text/javascript" src="build/js/snap/blocks.js"></script>
+        <script type="text/javascript" src="build/js/snap/threads.js"></script>
+        <script type="text/javascript" src="build/js/snap/objects.js"></script>
+        <script type="text/javascript" src="build/js/snap/gui.js"></script>
+        <script type="text/javascript" src="build/js/snap/paint.js"></script>
+        <script type="text/javascript" src="build/js/snap/lists.js"></script>
+        <script type="text/javascript" src="build/js/snap/byob.js"></script>
+        <script type="text/javascript" src="build/js/snap/xml.js"></script>
+        <script type="text/javascript" src="build/js/snap/store.js"></script>
+        <script type="text/javascript" src="build/js/snap/locale.js"></script>
+        <script type="text/javascript" src="build/js/snap/cloud.js"></script>
+        <script type="text/javascript" src="build/js/snap/sha512.js"></script>
+        <script type="text/javascript" src="build/js/codemao/cdn-uploader.js"></script>
+        <script type="text/javascript" src="https://o2n0qxlrf.qnssl.com/js/vue.min.js"></script>
+        <script type="text/javascript" src="https://o2n0qxlrf.qnssl.com/js/fabric.min.js"></script>
+
+        <script type="text/javascript" src="build/js/codemao/post-editor.js"></script>
+
+        <script type="text/javascript" src="https://o2n0qxlrf.qnssl.com/js/template-native.js"></script>
+        <script>
+            template.config('openTag','<#');
+            template.config('closeTag','#>');
+        </script>
+    </head>
+    <body style="height: 100%;">
+    <header id="ide-header" class="toolbar-top">
+        <div class="left-buttons">
+            <a class="header-button ide-home" @click="openLessonPage()">
+                <div></div>
+                <span>首页</span>
+            </a>
+            <div class="header-button ide-files" v-on:click="showCreationList()"
+                    v-on:mouseleave="hideCreationList()">
+                <div></div>
+                <span>文件</span>
+                <ul class="creation-menu" v-show="isCreationListShow">
+                    <li v-on:click="openProject()">打开</li>
+                    <li v-on:click="newProject()">新建</li>
+                    <li v-on:click="saveProjectLocal()">保存到本地</li>
+                    <li v-on:click="saveProjectAs()">另存为</li>
+                </ul>
+                <svg width="12px" height="8px" viewBox="124 18 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 3.7 (28169) - http://www.bohemiancoding.com/sketch -->
+                    <desc>Created with Sketch.</desc>
+                    <defs>
+                        <polygon id="arrow-down-path" points="130 19 134 23 126 23"></polygon>
+                        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox"
+                                id="filter-2">
+                            <feOffset dx="0" dy="-1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1"
+                                            result="shadowBlurOuter1"></feGaussianBlur>
+                            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.300000012 0" type="matrix"
+                                           in="shadowBlurOuter1"></feColorMatrix>
+                        </filter>
+                    </defs>
+                    <g id="Triangle-1-Copy" stroke="none" fill="none"
+                       transform="translate(130.000000, 21.000000) scale(1, -1) translate(-130.000000, -21.000000) ">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#arrow-down-path"></use>
+                        <use fill="#E2E2E2" fill-rule="evenodd" xlink:href="#arrow-down-path"></use>
+                    </g>
+                </svg>
+            </div>
+            <!--<div class="header-button ide-open">-->
+                <!--<div></div>-->
+                <!--<span>打开</span>-->
+            <!--</div>-->
+            <!--<div class="header-button ide-new">-->
+                <!--<div></div>-->
+                <!--<span>新建</span>-->
+            <!--</div>-->
+            <div class="header-button ide-save">
+                <div></div>
+                <span>保存</span>
+            </div>
+            <div style="display:none">
+            <div class="header-button ide-submit" style="display:none">
+            </div>
+        </div>
+            <svg width="3px" height="31px" viewBox="282 5 3 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs></defs>
+                <path d="M283.5,6 L283.5,34.6923077" id="Line-Copy-35" stroke-opacity="0.2" stroke="#000000" stroke-width="1" stroke-linecap="square" fill="none"></path>
+            </svg>
+            <!--<div class="header-button ide-save-as">-->
+            <!--<div>-->
+            <!--&lt;!&ndash;<div></div>&ndash;&gt;-->
+            <!--<span>另存为</span></div>-->
+            <!--</div>-->
+            <!--<div id="project-title" class="header-button">-->
+            <div id="project-title" class="header-button" v-on:click="edit">
+                <span v-bind:style="{display:spanDisplay}"  v-text="projectName" style="display:none"></span>
+                <input v-bind:style="{display:inputDisplay}" type="text"
+                       v-model="projectName" v-on:blur="finish" style="display:none">
+                <div></div>
+            </div>
+            <div class="header-button ide-share" @click="publish()">
+                <div></div>
+                <span>发布</span>
+            </div>
+            <style>
+                .btn-back-to-old{
+                    background: url(https://o44j7l4g3.qnssl.com/kitten%2Fimages%2Fnew%26old.svg) -132px 0 no-repeat;
+                    width: 113px;
+                    height: 30px;
+                    display: inline-block;
+                    cursor: pointer;
+                }
+            </style>
+            <a class="btn-back-to-old" target="_blank" href="https://idebeta.codemao.cn"></a >
+        </div>
+        <div class="right-buttons">
+            <div class="header-button ide-backpack" v-on:click="openBackpack()">
+                <div></div>
+                <span class="hint">战队背包</span>
+            </div>
+            <div class="header-button ide-creations" @click="openCreationPage()">
+                <div></div>
+                <span class="hint">我的作品</span>
+            </div>
+            <div id="header-user" class="header-button" v-on:click="toggleUserMenu()"
+                 v-on:mouseleave="hideUserMenu()">
+                <div class="user-img">
+                    <img alt="" v-bind:src="userAvatarURL"/>
+                </div>
+                <div class="user-name" v-text="userName"></div>
+                <svg width="12px" height="8px" viewBox="1410 19 12 8" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                     xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <polygon id="path-1" points="1416 20 1420 24 1412 24"></polygon>
+                        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox"
+                                id="filter-2">
+                            <feOffset dx="0" dy="-1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1"
+                                            result="shadowBlurOuter1"></feGaussianBlur>
+                            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.300000012 0" type="matrix"
+                                           in="shadowBlurOuter1"></feColorMatrix>
+                        </filter>
+                    </defs>
+                    <g id="Triangle-1" stroke="none" fill="none"
+                       transform="translate(1416.000000, 22.000000) scale(1, -1) translate(-1416.000000, -22.000000) ">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#EBEBEB" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                </svg>
+                <div id="user-info-menu" v-show="isUserMenuShow" style="display: none">
+                    <div style="display:none"><div class="row"><a @click="openLessonPage()">我的课程</a></div></div>
+                    <div class="row"><a @click="openCreationPage()">我的作品</a></div>
+                    <div class="row"><a @click="popUnloadMessage('https://www.codemao.cn/')">退出登录</a></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="material-store-wrapper" v-bind:class="{open: displayMaterialWindow}" v-on:click.stop="handleCloseMaterialStore($event)" v-cloak>
+        <section id="material-store" v-bind:class="classNameOfMaterialStore">
+            <div class="prev-tab-btn" v-on:click.stop="handlePrevTabClick"></div>
+            <div class="next-tab-btn" v-on:click.stop="handleNextTabClick"></div>
+            <div class="close-material-store-btn" v-on:click.stop="handleCloseMaterialStoreBtn"></div>
+            <div class="money-wrapper">
+                <div class="money-amount" v-text="userGold"></div>
+            </div>
+            <div class="upload-window" v-show="showUploadWindow">
+                <div class="wrapper">
+                    <div class="progress-window" v-if="upload.error.content === '' ">
+                        <div class="progress-wrapper">
+                            <div class="progress-bar">
+                                <div class="progress-bar-inner" v-bind:style="{width: upload.progress}" v-text="upload.progress"></div>
+                            </div>
+                        </div>
+                        <!--<div class="cancel-btn">取消上传</div>-->
+                    </div>
+                    <div class="message-window" v-if="upload.error.content !== '' ">
+                        <div class="content" v-text="upload.error.content"></div>
+                    </div>
+                    <div class="close-btn" v-on:click.stop="handleCloseUploadWindow"></div>
+                </div>
+            </div>
+            <div class="store-item-preview-window" v-show="showStoreItemPreviewWindow">
+                <div class="store-item-preview-wrapper" v-show="showStorePreviewWrapper">
+                    <div class="content">
+                        <p class="store-item-name" v-text="curStoreItem.name"></p>
+                        <p class="store-item-description" v-text="curStoreItem.description"></p>
+                    </div>
+                    <div class="preview-window image" v-if="curStoreItem.type === 'image'">
+                        <img class="target-img" v-bind:src="curStoreItem.preview" alt="">
+                    </div>
+                    <div class="preview-window image-set" v-if="curStoreItem.type === 'image-set'">
+                        <img class="target-img" v-bind:src="curStoreItem.preview[0]" alt="">
+                    </div>
+                    <div class="preview-window image-bg" v-if="curStoreItem.type === 'image-bg'" v-bind:style="{backgroundImage: 'url(' + curStoreItem.preview + ')'}"></div>
+                    <div class="preview-window audio" v-if="curStoreItem.type === 'audio'"></div>
+                    <div class="buy-btn" v-on:click.stop="handleConfirmBuyStuff" v-text="curStoreItem.gold + ' ' + '金币' " v-bind:class="{'not-enough-money':  userGold - curStoreItem.gold < 0}"></div>
+                    <div class="close-btn" v-on:click.stop="handleCloseStoreItemPreviewWindow"></div>
+                </div>
+                <div class="buy-result-window" v-show="!showStorePreviewWrapper" v-bind:class="{error: buyResultCode != 200}">
+                    <div class="content">
+                        <p class="description" v-text="buyResultText"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="material-store-dialog-window" v-show="showMaterialStoreDialogWindow">
+                <div class="material-store-dialog-wrapper">
+                    <div class="content">
+                        <p class="msg-text" v-text="messageObj.content"></p>
+                    </div>
+                    <div class="confirm-btn" v-on:click.stop="handleMsgConfirm">确定</div>
+                    <div class="close-btn" v-on:click.stop="handleCloseMaterialStoreDialogWindow"></div>
+                </div>
+            </div>
+            <header class="header">
+                <div class="header-icon juese-icon" v-bind:class="{selected: curTab === 1}"
+                     v-on:click.stop="handleJueseTabClick"></div>
+                <div class="header-icon beijing-icon" v-bind:class="{selected: curTab === 2}"
+                     v-on:click.stop="handleBeijingTabClick"></div>
+                <div class="header-icon yinyue-icon" v-bind:class="{selected: curTab === 3}"
+                     v-on:click.stop="handleYinyueTabClick"></div>
+                <div class="header-icon weixin-icon" v-bind:class="{selected: curTab === 4}"
+                     v-on:click.stop="handleWeixinTabClick"></div>
+                <div class="header-icon activity-icon" v-bind:class="{selected: curTab === 5}"
+                     v-on:click.stop="handleActivityTabClick"></div>
+            </header>
+            <div class="scroll-wrapper">
+                <div class="material-wrapper" v-el:material-wrapper>
+                    <div class="weixin-scan" v-if="curTab === 4">
+                        <div v-bind:style="{backgroundImage: 'url('+ qrCodeImage+ ')'}" alt="" v-if="curTab == 4" class="qr-code-image"></div>
+                        <div class="prompt-text"></div>
+                    </div>
+                    <div class="my-stuff">
+                        <div class="upload-material" v-if="curTab === 4" v-on:click.stop="handleUploadMaterial">
+                            <input type="file" accept="image/*,audio/mp3"
+                                   v-on:change="_handleInputChange($event)"
+                                   style="display: none;" v-el:upload-material-input>
+                        </div>
+                        <template v-for="item in myStuff">
+                            <div v-if="item.type === 'image'" class="item item-image"  v-on:click.stop="handleReadImage(item)">
+                                <i class="fa fa-times delete-weixin-item-btn" v-on:click.stop="handleDeleteWeixinItem(item)" v-if="curTab === 4"></i>
+                                <img src="https://o44j7l4g3.qnssl.com/codemao%2Fmaterial-store%2Fnew_1.png" alt="" class="new-icon"  v-if="item.isNew == 1">
+                                <img  v-if="item.isAppend" class="target-img" v-bind:src="item.preview" alt="">
+                                <img v-else class="target-img" v-bind:data-layzr="item.preview" alt="">
+                                <div class="name-label" v-text="item.name"></div>
+                                <div class="use-btn">使用</div>
+                            </div>
+                            <div v-if="item.type === 'image-set'" class="item item-image-set"
+                                 v-on:click.stop="handleReadImageSet(item)"
+                                 v-on:mouseenter="handleStartCarousel(item,$event)"
+                                 v-on:mouseleave="handleEndCarousel($event)">
+                                <i class="fa fa-times delete-weixin-item-btn" v-on:click.stop="handleDeleteWeixinItem(item)" v-if="curTab === 4"></i>
+                                <img src="https://o44j7l4g3.qnssl.com/codemao%2Fmaterial-store%2Fnew_1.png" alt="" class="new-icon"  v-if="item.isNew == 1">
+                                <img v-if="item.isAppend" class="target-img" v-bind:src="item.preview[0]" alt="">
+                                <img v-else class="target-img" v-bind:data-layzr="item.preview[0]" alt="">
+                                <div class="name-label" v-text="item.name"></div>
+                                <div class="use-btn">使用</div>
+                            </div>
+                            <div v-if="item.type === 'image-bg'" class="item item-image-bg"  v-on:click.stop="handleReadImageBg(item)">
+                                <i class="fa fa-times delete-weixin-item-btn" v-on:click.stop="handleDeleteWeixinItem(item)" v-if="curTab === 4"></i>
+                                <img src="https://o44j7l4g3.qnssl.com/codemao%2Fmaterial-store%2Fnew_1.png" alt="" class="new-icon"  v-if="item.isNew == 1">
+                                <img v-if="item.isAppend == 1" class="target-img" v-bind:src="item.preview" alt="">
+                                <img v-else class="target-img" v-bind:data-layzr="item.preview" alt="">
+                                <div class="name-label" v-text="item.name"></div>
+                                <div class="use-btn">使用</div>
+                            </div>
+                            <div v-if="item.type === 'audio'" class="item item-audio" v-bind:class="{playing: curPlayingAudio === item}">
+                                <i class="fa fa-times delete-weixin-item-btn" v-on:click.stop="handleDeleteWeixinItem(item)" v-if="curTab === 4"></i>
+                                <img src="https://o44j7l4g3.qnssl.com/codemao%2Fmaterial-store%2Fnew_1.png" alt="" class="new-icon"  v-if="item.isNew == 1">
+                                <div class="name-label" v-text="item.name"></div>
+                                <div class="audio-icon"  v-on:click.stop="handlePlayAudio(item)"  v-bind:class="{playing: curPlayingAudio === item}"></div>
+                                <div class="use-btn" v-on:click.stop="handleReadAudio(item)">使用</div>
+                            </div>
+                        </template>
+                        <div class="no-stuff" v-if="myStuff.length === 0 && curTab !== 4">
+                            <div class="no-stuff-image"></div>
+                        </div>
+                    </div>
+                    <div class="divider" v-if="curTab !== 4 && curTab !== 5"></div>
+                    <div class="store-stuff" v-if="curTab !== 4 && curTab !== 5">
+                        <template v-for="item in storeStuff">
+                            <div v-if="item.type === 'image'" class="item item-image" v-on:click.stop="handleStoreItemClick(item)">
+                                <img v-bind:data-layzr="item.preview" alt=""  class="target-img">
+                                <div class="name-label"  v-text="item.name"></div>
+                                <div class="gold-label" v-text="item.gold + ' ' + '金币'"></div>
+                            </div>
+                            <div v-if="item.type === 'image-set'" class="item item-image-set" v-on:click.stop="handleStoreItemClick(item)"
+                                 v-on:mouseenter="handleStartCarousel(item,$event)"
+                                 v-on:mouseleave="handleEndCarousel($event)">
+                                <img v-bind:data-layzr="item.preview[0]" alt="" class="target-img">
+                                <div class="name-label"  v-text="item.name"></div>
+                                <div class="gold-label" v-text="item.gold + ' ' + '金币'"></div>
+                            </div>
+                            <div v-if="item.type === 'image-bg'" class="item item-image-bg" v-on:click.stop="handleStoreItemClick(item)">
+                                <img v-bind:data-layzr="item.preview" alt=""  class="target-img">
+                                <div class="name-label"  v-text="item.name"></div>
+                                <div class="gold-label" v-text="item.gold + ' ' + '金币'"></div>
+                            </div>
+                            <div v-if="item.type === 'audio'" class="item audio" v-on:click.stop="handleStoreItemClick(item)">
+                                <div class="name-label" v-text="item.name"></div>
+                                <div class="audio-icon"  v-on:click.stop="handlePlayAudio(item)"  v-bind:class="{playing: curPlayingAudio === item}" ></div>
+                                <div class="gold-label" v-text="item.gold + ' ' + '金币'"></div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+            <div class="user-toolkit" data-url="https://www.codemao.cn:20000">
+        <!--<div class="toolkit-row">-->
+            <!--<div class="ask-question toolkit-btn"></div>-->
+        <!--</div>-->
+        <!--<div class="toolkit-row"  v-show="!showChatWindow">-->
+            <!--<div class="chat-btn toolkit-btn" v-on:click="openChatWindow"></div>-->
+        <!--</div>-->
+        <!--<div class="chat-wrapper" transition="sliding" v-show="showChatWindow">-->
+            <!--<div class="chat-close-btn" v-on:click.stop="closeChatWindow"></div>-->
+            <!--<div class="message-wrapper" v-on:wheel="handleWheel($event)">-->
+                <!--<template  v-for="message in messages">-->
+                    <!--<template v-if="message.type === 'world' ">-->
+                        <!--<div class="message world-type">-->
+                            <!--<div class="msg-type">世界</div>-->
+                            <!--<div class="text-wrapper">-->
+                                <!--<span class="user-name" v-text="message.user + ':' "></span>-->
+                                <!--<span class="msg-text" v-text="message.content"></span>-->
+        </section>
+    </section>
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</template>-->
+                    <!--<template v-if="message.type === 'system'">-->
+                        <!--<div class="message sys-type">-->
+                            <!--<div class="msg-type">系统</div>-->
+                            <!--<div class="text-wrapper">-->
+                                <!--<span class="msg-text" v-text="message.content"></span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</template>-->
+                <!--</template>-->
+            <!--</div>-->
+            <!--<div class="input-wrapper">-->
+                <!--<input type="text" class="user-input" v-model="userInput"  v-on:keyup.enter.stop="sendMsg">-->
+                <!--<div class="send-btn" v-on:click.stop="sendMsg">发送</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+                <!--<div id="add-an-actor" style="display: none;">-->
+                    <!--<div class="close-btn" onclick="closeAddActor()"><i class="fa fa-times"></i></div>-->
+                    <!--<div class="row">-->
+                        <!--<header>添加一个角色</header>-->
+                    <!--</div>-->
+                    <!--<div class="row">-->
+                        <!--<div class="entrance" onclick="openLibrary()">-->
+                            <!--<img src="https://dn-codemao.qbox.me/buttons/add-actor-pick.png" alt="">-->
+                            <!--<p>选一个</p>-->
+                        <!--</div>-->
+                        <!--<div class="entrance" onclick="paintNew()">-->
+                            <!--<img src="https://dn-codemao.qbox.me/buttons/add-actor-draw.png" alt="">-->
+                            <!--<p>自己画</p>-->
+                        <!--</div>-->
+                        <!--<div class="entrance backpack-entrance" onclick="Backpack.open()" style="display: none;">-->
+                            <!--<img src="https://dn-codemao.qbox.me/buttons/open-backpack-1.png" alt="">-->
+                            <!--<p>战队背包</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="row"></div>-->
+                <!--</div>-->
+    <!--<aside id="ide-sidebar-wrapper">-->
+        <!--<div class="sidebar">-->
+            <!--<div class="sidebar-btn-wrapper" v-on:click.stop="openSliderPane">-->
+                <!--<div class="sidebar-btn tips-btn">-->
+                    <!--<img src="http://7xli7a.com2.z0.glb.qiniucdn.com/images%2Fide-tips.svg" alt="">攻略-->
+                    <!--<i class="fa gonglue-arrow" v-bind:class="showSliderPane ? 'fa-angle-left' : 'fa-angle-right' "></i>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="sidebar-btn-wrapper" v-on:click.stop="playTutorialVideo">-->
+                <!--<div class="sidebar-btn video-btn"><img src="http://7xli7a.com2.z0.glb.qiniucdn.com/images%2Fide-cartoon.svg" alt="">上课</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="slider" v-show="showSliderPane">-->
+            <!--<div class="slider-row progress-row">-->
+                <!--<div class="progress-bar">-->
+                    <!--<div class="inner-cover-bar" v-on:click.stop="handleInnerCoverBarClick($event)"></div>-->
+                    <!--<div class="inner-bar" v-on:click.stop="handleInnerBarClick($event)"></div>-->
+                    <!--<div class="inner-shadow-bar" v-on:click.stop="handleInnerShadowBarClick($event)">-->
+                        <!--<div class="circle"></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="slider-row">-->
+                <!--<div class="block-wrapper">-->
+                    <!--<img  v-for="image in curImages" v-bind:src="image">-->
+                <!--</div>-->
+                <!--<div class="scan-wrapper">-->
+                    <!--<img src="http://7xli7a.com2.z0.glb.qiniucdn.com/images%2Fscan-light-bar-1.png" class="scan-light">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="slider-row">-->
+                <!--<div class="scan-btn" v-text="scanBtnText" v-on:click.stop="scanCode"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</aside>-->
+    <div style="position:fixed;top:40px;left:0;bottom:0;width:100%;" id="world-wrapper">
+        <div class="stage-decorate"></div>
+        <canvas id="world" tabindex="1" style="position: absolute; outline:none;" ></canvas>
+
+        <!--<div id="sprite-properties-editor" v-show="visible" v-on:blur="hide" style="display: none">-->
+            <!--<div class="sprite-properties-name" v-on:click="editSpriteName">-->
+                <!--<input class="name-input" type="text" v-model="name" v-on:blur="setName">-->
+                <!--<div alt="点击输入角色名字"></div>-->
+            <!--</div>-->
+            <!--<div class="sprite-position-container">-->
+                <!--<div class="sprite-costume"></div>-->
+                <!--<ul class="sprite-position">-->
+                    <!--<li>X:<input type="text" v-model="x" v-on:blur="setX"></li>-->
+                    <!--<li>Y:<input type="text" v-model="y" v-on:blur="setY"></li>-->
+                    <!--<li>方向:<input type="text" v-model="heading" v-on:blur="setHeading"><span>°</span></li>-->
+                    <!--<li>大小:<input type="text" v-model="scale" v-on:blur="setScale"><span>%</span></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--<div class="sprite-visible"><span>角色显示：</span><input type="checkbox" v-model="!hidden" v-on:click="toggleVisible"/></div>-->
+            <!--<div class="sprite-draggable">-->
+                <!--<span>角色可拖动：</span>-->
+                <!--<input type="checkbox" v-model="draggable" />-->
+            <!--</div>-->
+            <!--<div class="sprite-rotate-style">-->
+                <!--<span>角色旋转模式:</span>-->
+                <!--<div>-->
+                    <!--<div class="sprite-rotate-all" v-bind:class="judgeRotateStyle(1)" v-on:click.stop="toggleRotationStyle(1)">-->
+                        <!--<div></div>-->
+                    <!--</div>-->
+                    <!--<div class="sprite-rotate-left-right" v-bind:class="judgeRotateStyle(2)" v-on:click.stop="toggleRotationStyle(2)">-->
+                        <!--<div></div>-->
+                    <!--</div>-->
+                    <!--<div class="sprite-rotate-none" v-bind:class="judgeRotateStyle(0)" v-on:click.stop="toggleRotationStyle(0)">-->
+                        <!--<div></div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div id="ide-corral-bar" style="display: none">
+            <div class="stage-start">
+                <div class="icon"></div>
+                <span>开始</span>
+            </div>
+            <div class="stage-stop" style="display: none">
+                <div class="icon"></div>
+                <span>停止</span>
+            </div>
+            <!--<div class="right-button">-->
+                <!--<div class="stage-size">-->
+                    <!--<div></div>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+        <div id="ide-corral" v-bind:class="currentClass">
+            <svg width="131px" height="110px" viewBox="29 4576 131 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <defs>
+                    <path d="M29,4581.9922 C29,4578.6828 31.6853944,4576 35.0094459,4576 L152.990554,4576 C156.309479,4576 159,4578.67645 159,4581.99055 L159,4620.93726 L151.586592,4628.81653 C150.451997,4630.02243 150.457275,4631.97991 151.586592,4633.17621 L159,4641.0293 L159,4680.00499 C159,4683.31594 156.314606,4686 152.990554,4686 L35.0094459,4686 C31.6905206,4686 29,4683.3082 29,4680.0078 L29,4581.9922 Z" id="path-2"></path>
+                    <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="130" height="110" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                </defs>
+                <use id="Combined-Shape-Copy-5" stroke="#DA9C16" mask="url(#mask-2)" stroke-width="2" fill="#FEE28E" fill-rule="evenodd" xlink:href="#path-2"></use>
+            </svg>
+
+            <div class="stage-button corral-button" v-on:click="clickStage">
+                <div class="icon-label">
+                    <span>舞台</span>
+                </div>
+                <div class="icon-costume"></div>
+                <div class="icon-setting-button" v-on:click="openSettings()"></div>
+
+            </div>
+        </div>
+        <div id="ide-categories" style="visibility: hidden;" v-on:click="onMouseDown()">
+            <ul>
+                <template v-for="cat in categories">
+                    <li class="category-button" v-on:click="switchCategory(cat)"
+                        v-bind:style="getButtonStyle(cat)"
+                        v-bind:class="getButtonClass(cat)">
+                        <div class="category-color" v-bind:style="getColorStyle(cat)"></div>
+                        <div class="category-icon" v-bind:class="getIconClass(cat)"></div>
+                        <span v-text="getName($index)"></span>
+                    </li>
+                </template>
+            </ul>
+            <div class="categories-side" v-bind:style="sideStyle"></div>
+        </div>
+        <div id="SpriteBar">
+            <div class="spritebar-left" id="SpriteBarLeft">
+                <div class="name-input-group">
+                    <input class="name-input" type="text" v-model="name" v-on:blur="setName">
+
+                    <div class="toggleVisible-wrapper" v-bind:class="{ 'hidden': hidden }" v-on:click="toggleVisible">
+                        <i class="toggleVisible"></i>
+                    </div>
+                </div>
+                <div class="sprite-bar-input">
+                    X:<input type="text" v-model="x" v-on:blur="setX">
+                </div>
+                <div class="sprite-bar-input">
+                    Y:<input type="text" v-model="y" v-on:blur="setY">
+                </div>
+                <div class="sprite-bar-input">
+                    方向:<input type="text" v-model="heading" v-on:blur="setHeading">°
+                </div>
+                <div class="sprite-bar-input">
+                    大小:<input type="text" v-model="scale" v-on:blur="setScale">%
+                </div>
+                <div class="sprite-bar-input">
+                    可拖动:<input type="checkbox" class="toggle-draggable-checkbox" v-model="draggable">
+                </div>
+                <div class="rotation-style">
+                    <span>旋转模式：</span>
+
+                    <div class="current-rotation-style" v-on:click="showList()">
+                        <div v-bind:class="getRotationClass()"></div>
+                        <svg width="8px" height="4px" viewBox="1063 624 8 4" version="1.1"
+                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <polygon id="Triangle-3" stroke="none" fill="#999999" fill-rule="evenodd"
+                                     points="1067 624 1071 628 1063 628"></polygon>
+                        </svg>
+                        <div class="rotation-style-selector" v-show="showRotationList">
+                            <div v-bind:class="getRotationListClass(0)"
+                                 v-on:click.stop="setRotationStyle(0)">
+                                <div class="rotation-none-icon"></div>
+                                <span class="hint">禁止旋转</span>
+                            </div>
+                            <div v-bind:class="getRotationListClass(1)"
+                                 v-on:click.stop="setRotationStyle(1)">
+                                <div class="rotation-full-icon"></div>
+                                <span class="hint">自由旋转</span>
+                            </div>
+                            <div v-bind:class="getRotationListClass(2)"
+                                 v-on:click.stop="setRotationStyle(2)">
+                                <div class="rotation-lr-icon"></div>
+                                <span class="hint">左右翻转</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sprite-bar-right" id="SpriteEditor">
+                <div class="icon-button clean-up-button"
+                     v-on:click="cleanUp">
+                    <div></div>
+                    <span class="hint">整理代码</span>
+                </div>
+                <!--<div class="icon-button zoomOut"-->
+                <!--v-bind:class="{active: zoomOut}"-->
+                <!--v-on:click="zoomOutHandle">-->
+                <!--</div>-->
+                <!--<div class="icon-button recover"-->
+                <!--v-bind:class="{active: recover}"-->
+                <!--v-on:click="recoverHandle">-->
+                <!--</div>-->
+                <!--<div class="icon-button zoomIn"-->
+                <!--v-bind:class="{active: zoomIn}"-->
+                <!--v-on:click="zoomInHandle">-->
+                <!--</div>-->
+                <!--<div class="icon-button"-->
+                <!--v-on:click="askQuestion">猫老祖</div>-->
+            </div>
+        </div>
+    </div>
+    <div id="costume-editor" v-show="showEditor" style="display: none;">
+        <div class="close-btn" v-on:click.stop="closeEditor"><i class="fa fa-times"></i></div>
+        <div class="header">
+            <div class="style1" v-show="curTab">
+                <div class="tab" v-on:click.stop="toggleTab(1)">{{nameOfTab1}}</div>
+                <div class="tab" v-on:click.stop="toggleTab(2)">声音</div>
+            </div>
+            <div class="style2" v-show="!curTab">
+                <div class="tab" v-on:click.stop="toggleTab(1)">{{nameOfTab1}}</div>
+                <div class="tab" v-on:click.stop="toggleTab(2)">声音</div>
+            </div>
+        </div>
+        <div class="costume-list" v-show="curTab">
+            <!--<div class="rotation-style" v-show="nameOfTab1=='造型'">-->
+            <!--<img src="http://7xli7a.com2.z0.glb.qiniucdn.com/buttons/rotate-free.png"-->
+            <!--alt="自由旋转" v-show="rotationStyle!=1"-->
+            <!--v-on:click.stop="toggleRotationStyle(1)"-->
+            <!--onmouseover="src='http://7xli7a.com2.z0.glb.qiniucdn.com/buttons/rotate-free-on.png'"-->
+            <!--onmouseout="src='http://7xli7a.com2.z0.glb.qiniucdn.com/buttons/rotate-free.png'"/>-->
+            <!--<img src="http://7xli7a.com2.z0.glb.qiniucdn.com/buttons/rotate-free-on.png"-->
+            <!--alt="自由旋转" v-show="rotationStyle==1"/>-->
+            <!--<img src="http://7xli7a.com2.z0.glb.qiniucdn.com/buttons/rotate-left-right.png"-->
+            <!--alt="左右翻转" v-show="rotationStyle!=2"-->
+            <!--v-on:click.stop="toggleRotationStyle(2)"-->
+            <!--onmouseover="src='http://7xli7a.com2.z0.glb.qiniucdn.com/buttons/rotate-left-right-on.png'"-->
+            <!--onmouseout="src='http://7xli7a.com2.z0.glb.qiniucdn.com/buttons/rotate-left-right.png'"/>-->
+            <!--<img src="http://7xli7a.com2.z0.glb.qiniucdn.com/buttons/rotate-left-right-on.png"-->
+            <!--alt="左右翻转" v-show="rotationStyle==2"/>-->
+            <!--<img src="http://7xli7a.com2.z0.glb.qiniucdn.com/buttons/rotate-disabled.png"-->
+            <!--alt="不可旋转" v-show="rotationStyle!=0"-->
+            <!--v-on:click.stop="toggleRotationStyle(0)"-->
+            <!--onmouseover="src='http://7xli7a.com2.z0.glb.qiniucdn.com/buttons/rotate-disabled-on.png'"-->
+            <!--onmouseout="src='http://7xli7a.com2.z0.glb.qiniucdn.com/buttons/rotate-disabled.png'"/>-->
+            <!--<img src="http://7xli7a.com2.z0.glb.qiniucdn.com/buttons/rotate-disabled-on.png"-->
+            <!--alt="不可旋转" v-show="rotationStyle==0"/>-->
+            <!--</div>-->
+            <div class="write-costume" v-on:click.stop="openPalette">
+                <i class="fa fa-pencil"></i>
+                <span>自己画</span>
+            </div>
+            <div class="wrapper">
+                <div class="item">
+                    <div class="costume-icon"></div>
+                    <input class="costume-name"/>
+
+                    <div class="costume-btns">
+                        <div class="delete-costume"><i class="fa fa-pencil-square-o"></i></div>
+                        <div class="modify-costume"><i class="fa fa-times"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-new-costume" v-on:click.stop="addNewCostume">
+                <i class="fa fa-plus"></i>
+                <span>添加{{nameOfTab1}}</span>
+            </div>
+        </div>
+        <div class="sound-list" v-show="!curTab">
+            <div class="record" v-show="!needInitRecorder&&!isRecording" v-on:click.stop="recordSound">
+                <i class="fa fa-microphone"></i>
+                <span>点击开始录音</span>
+            </div>
+            <div class="record" v-show="needInitRecorder" v-on:click.stop="initRecording">
+                <i class="fa fa-microphone"></i>
+                <span>我要录音</span>
+            </div>
+            <div v-show="!needInitRecorder&&isRecording" v-on:click.stop="stopRecording">
+                <img src="http://7xli7a.com2.z0.glb.qiniucdn.com/buttons/recording.gif"  />
+                <div class="recording"></div>
+            </div>
+            <div class="wrapper">
+            </div>
+            <div class="add-more-sound" v-on:click.stop="addNewSound">
+                <i class="fa fa-plus"></i><span>更多声音</span>
+            </div>
+        </div>
+    </div>
+
+        <!--<script id="template-categories" type="text/html">-->
+            <!--<div class="<#=cate#>" style="background-color:<#=color#>;"-->
+                    <!--v-on:click="switchCategory(<#=cat#>)"-->
+                    <!--v-bind:class="{'active' : isCurrent(<#=cat#>)}">-->
+            <!--</div>-->
+        <!--</script>-->
+
+
+    <div id="ide-corral-button" style="display: none;"
+         v-bind:class="{'open':isBoxOpened}">
+        <div class="corral-buttons">
+            <svg width="4px" height="100px" viewBox="1169 654 4 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path d="M1170.89972,654.45082 L1170.89972,752.970816" id="Line-Copy" stroke="#000000" stroke-width="0.9" stroke-linecap="square" stroke-dasharray="4.5" fill="none" opacity="0.2"></path>
+            </svg>
+            <div class="sprite-draw corral-button">
+                <div class="img"></div>
+            </div>
+            <div class="sprite-add corral-button" v-on:click="addSprite()" v-bind:class="{'shining': isShining}">
+                <div class="img"></div>
+            </div>
+        </div>
+        <div class="master-mao-wrapper"  @click="closeNotice">
+            <div class="master-mao-box">
+                <div class="master-qr-code">
+                    <div>
+                        <img class="master-qr-code-img" src="index.html" alt="二维码无法显示，请搜索编程猫微信公众号"/>
+                    </div>
+                    <span>微信扫码</span>
+                </div>
+                <div class="master-send">
+                    <input id="master-code" class="master-magic-word" type="text" placeholder="输入口令"  v-model="magicWord" v-on:keyup.enter="sendMagic()"/>
+                    <label for="master-code" v-bind:class="masterLabelClass" v-text="magicHint" v-show="showLabel" style="display: none"></label>
+                    <div class="master-chant" type="button" v-on:click="sendMagic()">发送</div>
+                </div>
+            </div>
+            <svg width="9px" height="100px" viewBox="1595 5243 9 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <!-- Generator: Sketch 3.7 (28169) - http://www.bohemiancoding.com/sketch -->
+                <desc>Created with Sketch.</desc>
+                <defs></defs>
+                <path d="M1597,5244 L1597,5342.52" id="Line-Copy-5" stroke="#000000" stroke-width="0.9" stroke-linecap="square" stroke-dasharray="4.5" fill="none" opacity="0.2"></path>
+                <polygon id="Shape-Copy-30" stroke="none" fill="#9C8F85" fill-rule="evenodd" opacity="0.6" points="1603.39062 5291.99971 1597 5297.43093 1597 5286.56849"></polygon>
+            </svg>
+            <div class="master-mao-button"
+                    v-on:click="toggleMagicBox()">
+                <div></div>
+                <span>  上课</span>
+            </div>
+        </div>
+        <div class="bubble" v-show="showBubble" style="display: none">
+            <svg width="142px" height="66px" viewBox="1213 598 142 66" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <!-- Generator: Sketch 3.7 (28169) - http://www.bohemiancoding.com/sketch -->
+                <desc>Created with Sketch.</desc>
+                <defs>
+                    <path d="M1218,605.805053 C1218,603.151295 1220.15384,601 1222.79552,601 L1345.20448,601 C1347.85297,601 1350,603.150574 1350,605.805053 L1350,636.194947 C1350,638.848705 1347.84507,641 1345.20892,641 L1340.06875,641 L1339.26553,652.116351 C1339.10637,654.319048 1337.58766,654.981721 1335.86973,653.5935 L1320.28516,641 L1222.79623,641 C1220.14735,641 1218,638.849426 1218,636.194947 L1218,605.805053 Z" id="bubble-path"></path>
+                    <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+                        <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                        <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+                        <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+                    </filter>
+                    <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+                        <feGaussianBlur stdDeviation="2" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+                        <feOffset dx="0" dy="4" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+                        <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+                        <feColorMatrix values="0 0 0 0 0.989902211   0 0 0 0 0.963960006   0 0 0 0 0.896942644  0 0 0 1 0" type="matrix" in="shadowInnerInner1" result="shadowMatrixInner1"></feColorMatrix>
+                        <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetInner2"></feOffset>
+                        <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner2"></feComposite>
+                        <feColorMatrix values="0 0 0 0 1   0 0 0 0 0.985833333   0 0 0 0 0.95  0 0 0 1 0" type="matrix" in="shadowInnerInner2" result="shadowMatrixInner2"></feColorMatrix>
+                        <feOffset dx="0" dy="-2" in="SourceAlpha" result="shadowOffsetInner3"></feOffset>
+                        <feComposite in="shadowOffsetInner3" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner3"></feComposite>
+                        <feColorMatrix values="0 0 0 0 0.929411765   0 0 0 0 0.882352941   0 0 0 0 0.760784314  0 0 0 1 0" type="matrix" in="shadowInnerInner3" result="shadowMatrixInner3"></feColorMatrix>
+                        <feMerge>
+                            <feMergeNode in="shadowMatrixInner1"></feMergeNode>
+                            <feMergeNode in="shadowMatrixInner2"></feMergeNode>
+                            <feMergeNode in="shadowMatrixInner3"></feMergeNode>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <g id="Rectangle-436" stroke="none" fill="none">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#bubble-path"></use>
+                    <use fill="#FFFBF1" fill-rule="evenodd" xlink:href="#bubble-path"></use>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#bubble-path"></use>
+                </g>
+            </svg>
+            <div></div>
+            <span>收到素材</span>
+        </div>
+        <div class="bubble-notice" v-show="showNotice" style="display: none;">
+            <div class="bubble-notice-background"></div>
+            <img src="https://o44j7l4g3.qnssl.com/program/ide/hint-1.png" alt="扫码免费上课">
+            <div class="bubble-notice-close" v-on:click="closeNotice"></div>
+        </div>
+        <!--<div class="sprite-upload corral-button">-->
+            <!--<div class="img"></div>-->
+        <!--</div>-->
+    </div>
+    </div>
+    <!--Painter-->
+    <div id="painter-wrapper" style="position: absolute;width:100%;height:100%;" v-bind:style="{visibility: painterVisibility, zIndex: zIndex}">
+        <painter></painter>
+    </div>
+
+    <div id="open-project-dialog-container" v-show="isShow" style="display: none;">
+        <div class="dialog-background" ></div>
+        <div id="open-project-dialog" class="ide-dialog">
+            <div class="dialog-header">
+                <h2>打开作品</h2>
+                <div class="dialog-close" v-on:click="hide">
+                    <div></div>
+                </div>
+            </div>
+            <div class="project-list-thumbnail">
+                <ul>
+                    <li class="project-item-thumbnail"
+                        v-for="item in projectList"
+                        v-on:click="open(item.id)"
+                        track-by="id">
+                        <div class="project-delete" v-on:click.stop="delete(item)">
+                            <div></div>
+                        </div>
+                        <img alt="缩略图无法显示" v-bind:src="item.thumbnail"/>
+                        <h3>{{item.workName}}</h3>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="save-project-dialog-container" v-show="isShow" style="display: none;">
+        <div class="dialog-background" ></div>
+        <div id="save-project-dialog" class="ide-dialog">
+            <div class="dialog-header">
+                <h2>保存作品</h2>
+                <div class="dialog-close" v-on:click="hide">
+                    <div></div>
+                </div>
+            </div>
+            <div class="project-list-container">
+                <div class="project-info">
+                    <div id="current-project-thumbnail" class="project-thumbnail-container">
+                        <div class="thumbnail-title">作品缩略图</div>
+                        <div class="project-thumbnail"></div>
+                    </div>
+                    <div class="project-name">
+                        <h3>作品名:</h3>
+                        <input type="text" v-model="projectName"/>
+                    </div>
+                </div>
+                <div class="project-list">
+                    <h3 class="project-list-title">作品列表</h3>
+                    <div class="project-list-thumbnail">
+                        <ul>
+                            <li class="project-item-thumbnail"
+                                v-for="item in projectList"
+                                v-on:click="select(item)"
+                                v-bind:class="judgeSelected(item.id)"
+                                track-by="id">
+                                <div class="project-delete" v-on:click.stop="delete(item)">
+                                    <div></div>
+                                </div>
+                                <img alt="缩略图无法显示" v-bind:src="item.thumbnail"/>
+                                <h4>{{item.workName}}</h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="dialog-buttons">
+                <div class="project-save-button" v-on:click="save">保存</div>
+                <div class="project-save-button save-to-local-btn" v-on:click="saveLocal">保存到本地</div>
+            </div>
+        </div>
+    </div>
+    <div id="triple-confirm-dialog-container" v-show="isShow" style="display: none;">
+        <div class="dialog-background"></div>
+        <div id="triple-confirm-dialog" class="ide-dialog">
+            <div class="dialog-header">
+                <h2>{{title}}</h2>
+            </div>
+            <div class="ide-dialog-content">
+                {{{content}}}
+            </div>
+            <div class="dialog-footer">
+                <div class="ide-dialog-button gradient-green" v-on:click="confirmYes">{{textYes}}</div>
+                <div class="ide-dialog-button" v-show="!isHideNo" v-on:click="confirmNo">{{textNo}}</div>
+                <div class="ide-dialog-button" v-show="!isHideCancel" v-on:click="cancel">{{textCancel}}</div>
+            </div>
+        </div>
+    </div>
+    <!--<canvas class="grabbed-morph"></canvas>-->
+            <audio id="soundEffect" src="index.html" style="display:none"></audio>
+            <div class="lovely-cat-box">
+                <div class="biancmCat icon"></div>
+                <div class="conversationBox icon">
+                    <div class="icon have-lesson"></div>
+                    <div class="icon ask-question"></div>
+                </div>
+            </div>
+            <div id="backpack-window" v-bind:style="{display: isShowBackpackWindow}" style="display: none;">
+                <div class="header-wrapper">
+                    <div class="circle">
+                        <div></div>
+                        <header></header>
+                    </div>
+                    <div id="backpack-close-btn" v-on:click.stop="closeBackpackWindow">
+                        <div></div>
+                    </div>
+                </div>
+                <div class="backpack-wrapper">
+                    <div class="backpack-ai" v-show="isLesson">
+                        <div class="item" v-for="item in aiItems" v-on:click.stop="addAiItem($index)">
+                            <div>
+                                <img v-bind:src="item.thumbnail" alt=""/>
+                            </div>
+                            <span class="item-name" v-text="item.name" v-bind:title="item.name"></span>
+                            <span class="item-author" v-text="item.authorName" v-bind:title="item.authorName"></span>
+                        </div>
+                    </div>
+                    <div class="backpack-human">
+                        <div class="item" v-for="item in items" track-by="id" v-on:click.stop="addItem($index)">
+                            <img v-bind:src="item.thumbnail" alt="" />
+                            <span v-on:click.stop="deleteItem($index)"
+                              class="item-close-btn"><i class="fa fa-times"></i></span>
+                            <span class="item-name" v-text="item.name" v-bind:title="item.name"></span>
+                            <span class="item-author" v-text="item.authorName" v-bind:title="item.authorName"></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+    <div id="saving-message" style="display: none;">
+        <div class="saving" style="display: none;">
+            <img class="saving-img" src="http://7xli7a.com2.z0.glb.qiniucdn.com/img/message-saving.png"/>
+        </div>
+        <div class="saved" style="display: none;">
+            <img class="saving-img" src="http://7xli7a.com2.z0.glb.qiniucdn.com/img/message-saved.png" />
+        </div>
+        <div class="cancel" style="display: none;">
+            <img src="http://7xli7a.com2.z0.glb.qiniucdn.com/buttons/button-save-again.png" alt="取消保存"/>
+        </div>
+    </div>
+        <script type="text/javascript">
+            window.codemao={
+                apiServer:"https://api.codemao.cn/api",
+                preloadConfig:'',
+                preloadXML:'',
+                userAvatar:'',
+                imgScenes:'',
+                imgTutorial:'',
+                video:'',
+                videoTutorial:'',
+                videoEffect:'',
+                taskTitle:'',
+                taskTarget:'',
+                isteamwork:'0',
+                userName:'',
+                iframeUrl:'https://www.codemao.cn/animate/3-undefinedundefined/story/',
+                userId: '',
+                parentid: '',
+                id:'',
+                token:'',
+                cdnPath:'https://up.qbox.me/putb64/-1',
+                reward:'',
+                isLesson:'0',
+                currentStep:'',
+                isPass:'false',
+           };
+            window.codemao.preloadXML=window.codemao.preloadXML.replace(/__error/g,'script');
+            if(window.codemao.reward.length>0)window.codemao.reward=JSON.parse(window.codemao.reward);
+            if(window.codemao.preloadConfig.length>0){
+                window.codemao.preloadConfig=JSON.parse(window.codemao.preloadConfig);
+            }
+            if(window.codemao.imgScenes.length>0){
+                window.codemao.imgScenes=JSON.parse(window.codemao.imgScenes);
+            }
+            if(window.codemao.imgTutorial.length>0){
+                window.codemao.imgTutorial=JSON.parse(window.codemao.imgTutorial);
+            }
+            if(window.codemao.video.length>0){
+                window.codemao.video=JSON.parse(window.codemao.video);
+            }
+            if(window.codemao.videoTutorial.length>0){
+                window.codemao.videoTutorial=JSON.parse(window.codemao.videoTutorial);
+            }
+            if(window.codemao.videoEffect.length>0){
+                window.codemao.videoEffect=JSON.parse(window.codemao.videoEffect);
+            }
+            if(window.codemao.taskTitle.length>0){
+                window.codemao.taskTitle=JSON.parse(window.codemao.taskTitle);
+            }
+            if(window.codemao.taskTarget.length>0){
+                window.codemao.taskTarget=JSON.parse(window.codemao.taskTarget);
+            }
+        </script>
+    <!--<script src="build/js/ide/wechatHeadImg.js"></script>-->
+    <script src="build/js/codemao/scrollbar.js"></script>
+    <script src="build/js/codemao/material-store.js"></script>
+    <script src="build/js/ide/savingMessage.js"></script>
+    <script src="build/js/codemao/add-actor.js"></script>
+    <script src="build/js/codemao/actor-editor.js"></script>
+    <!--<script src="build/js/codemao/sprite-properties.js"></script>-->
+    <script src="build/js/codemao/open-project-dialog.js"></script>
+    <script src="build/js/codemao/save-project-dialog.js"></script>
+    <script src="build/js/codemao/confirm-dialog.js"></script>
+    <script src="build/js/codemao/recorder.js"></script>
+    <script src="build/js/codemao/soundRecord.js"></script>
+    <!--<script src="build/js/codemao/ide-sidebar.js"></script>-->
+    <script src="build/js/codemao/stage-talk.js"></script>
+    <script src="build/js/codemao/tutorial-flow.js"></script>
+    <script src="build/js/codemao/backpack.js"></script>
+    <script src="codemao-fabric/dist/js/bundle.js"></script>
+    <script type="text/javascript" src="build/js/codemao/main.js"></script>
+    <script src="build/js/codemao/cm-dialog.js"></script>
+    <link rel="stylesheet" href="css/cm-dialog.css">
+    <!--<script src="build/js/codemao/iframe-tutorial.js"></script>-->
+    </body>
+</html>

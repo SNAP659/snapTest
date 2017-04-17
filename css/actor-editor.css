@@ -1,0 +1,443 @@
+#costume-editor {
+    width: 300px;
+    position: absolute;
+    left: 600px;
+    top: 40px;
+    bottom: 1px;
+
+    /*margin:0 0 0 -300px;*/
+
+    background-color: hsl(26, 16%, 91%);
+
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+
+    -webkit-box-shadow: 0 1px 1px 2px gray;
+    -moz-box-shadow: 0 1px 1px 2px gray;
+    box-shadow: 0 1px 1px 2px gray;
+
+    z-index: 100;
+}
+
+#costume-editor .header {
+    background-color: rgb(165, 162, 160);
+    width: 100%;
+    height: 3rem;
+    border-top-right-radius: .5rem;
+    border-top-left-radius: .5rem;
+    position: relative;
+}
+
+#costume-editor .wrapper{
+    height: auto;
+
+    overflow-y: scroll;
+    position: absolute;
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 4.5rem;
+    top: 205px;
+}
+
+#costume-editor .close-btn {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: rgb(255, 168, 81);
+    color: white;
+    text-align: center;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    z-index: 100;
+    cursor: pointer;
+}
+
+#costume-editor .close-btn:hover{
+    background-color: hsl(30, 100%, 70%);
+    color: hsl(0, 0%, 100%);
+}
+
+#costume-editor .close-btn .fa-times {
+    font-size: 24px;
+}
+
+#costume-editor .header .tab {
+    display: inline-block;
+    color: rgb(235, 231, 228);
+    background-color: rgb(177, 175, 174);
+    width: 4.5rem;
+    height: 2.2rem;
+    bottom: 0;
+    position: absolute;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 2.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+#costume-editor .header .tab:last-child {
+    left: 4.5rem;
+}
+
+#costume-editor .header .style1 .tab:first-child {
+    color: hsl(30, 100%, 66%);
+    background-color: hsl(26, 15%, 91%);
+}
+
+#costume-editor .header .style1 .tab:last-child {
+    color: hsl(26, 15%, 91%);
+    background-color: hsl(20, 2%, 69%);
+    padding-left: 2rem;
+}
+
+#costume-editor .header .style1 .tab:first-child::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    border: 18px solid;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: hsl(26, 15%, 91%);
+    border-bottom-color: hsl(26, 15%, 91%);
+    z-index: 100;
+}
+
+#costume-editor .header .style1 .tab:last-child::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    border: 17px solid;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: hsl(20, 2%, 69%);
+    border-bottom-color: hsl(20, 2%, 69%);
+}
+
+#costume-editor .header .style2 .tab:first-child {
+    color: hsl(26, 15%, 91%);
+    background-color: hsl(20, 2%, 69%);
+}
+
+#costume-editor .header .style2 .tab:last-child {
+    color: hsl(30, 100%, 66%);
+    background-color: hsl(26, 16%, 91%);
+    padding-left: 2rem;
+    z-index: 100;
+}
+
+#costume-editor .header .style2 .tab:first-child::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    border: 17px solid;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: hsl(20, 2%, 69%);
+    border-bottom-color: hsl(20, 2%, 69%);
+    z-index: 100;
+}
+
+#costume-editor .header .style2 .tab:last-child::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    border: 18px solid;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: hsl(26, 16%, 91%);
+    border-bottom-color: hsl(26, 16%, 91%);
+}
+
+#costume-editor .header .style2 .tab:first-child:hover{
+    background-color: hsl(20, 1%, 73%);
+    color: hsl(25, 14%, 95%);
+}
+
+#costume-editor .header .style1 .tab:last-child:hover{
+    background-color: hsl(20, 1%, 73%);
+    color: hsl(25, 14%, 95%);
+
+}#costume-editor .header .style1 .tab:last-child:hover:after{
+     border-top-color: transparent;
+     border-right-color: transparent;
+     border-left-color: hsl(20, 2%, 74%);
+     border-bottom-color: hsl(20, 2%, 74%);
+}
+
+#costume-editor .costume-list .rotation-style img{
+    margin-bottom: 8px;
+    margin-right: 1px;
+}
+
+.costume-list {
+    padding: 1.5rem 0.5rem 0;
+}
+
+.costume-list .item {
+    padding: 5px;
+    height: 4rem;
+    width: 100%;
+    background-color: hsl(30, 20%, 98%);
+    border-radius: .5rem;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.costume-list .item.selected {
+    color: hsl(30, 100%, 66%);
+    border: 2px solid hsl(30, 100%, 66%);
+    padding:3px;
+
+}
+
+.costume-list .item:hover{
+    background-color: hsl(32, 85%, 86%);
+}
+
+.costume-list .costume-icon, .costume-list .costume-icon canvas {
+    height: 50px;
+    width: 50px;
+}
+
+.costume-list .costume-name {
+    width: 3rem;
+    height: 1.25rem;
+    -webkit-flex: 1 0 auto;
+    flex: 1 0 auto;
+    border: 1px solid hsl(20, 2%, 69%);
+    border-radius: .5rem;
+    background-color: hsl(30, 17%, 98%);
+    text-indent: 1rem;
+    outline: none;
+}
+
+.costume-list .item.selected .costume-name {
+    border-color: hsl(30, 100%, 66%);
+}
+
+.costume-list .costume-btns {
+    color: hsl(20, 2%, 69%);
+    font-size: 1.4rem;
+    /*width: 3rem;*/
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+    margin-left: 0.2rem;
+    cursor: pointer;
+}
+
+.costume-list .costume-btns > div{
+    display: flex;
+    display: -webkit-flex;
+    /*width: 1.5rem;*/
+
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+
+    margin: 0.1rem;
+}
+
+.costume-list .item.selected .costume-btns > div {
+    color: hsl(30, 100%, 66%);
+}
+
+.costume-list .costume-btns > div {
+    outline: none;
+}
+
+.costume-list .add-new-costume {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    height: 3.5rem;
+    width: 284px;
+    border: 4px dotted hsl(20, 2%, 69%);
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 3rem;
+    text-indent: 0.5rem;
+    color: rgb(177, 175, 174);
+    cursor: pointer;
+    position: absolute;
+    bottom: 1rem;
+}
+
+.costume-list .add-new-costume:hover {
+    color: hsl(30, 100%, 66%);
+    border-color: hsl(30, 100%, 66%);
+}
+
+.costume-list .add-new-costume .fa-plus {
+    font-size: 2rem;
+}
+
+.costume-list .write-costume .fa-pencil {
+    height: 3rem;
+    width: 3rem;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 3rem;
+}
+
+.sound-list {
+    padding: 1.5rem 0.5rem 0;
+}
+
+.sound-list img{
+    height: 4rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    display: -webkit-flex;
+    display: flex;
+    margin-bottom: 1rem;
+    -webkit-align-items: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sound-list .recording {
+    height: 4rem;
+    width: 284px;
+    border-radius: 0.5rem;
+    position: absolute;
+    top:72px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.sound-list .recording:hover{
+    background-color: rgba(255, 168, 81, 0.34)
+}
+
+
+.sound-list .item.selected {
+    color: hsl(30, 100%, 66%);
+}
+
+.sound-list .record, .costume-list .write-costume {
+    padding-left: 0.5rem;
+    height: 4rem;
+    width: 100%;
+    background-color: hsl(0, 9%, 98%);
+    border-radius: 0.5rem;
+    display: -webkit-flex;
+    display: flex;
+    margin-bottom: 1rem;
+    -webkit-align-items: center;
+    align-items: center;
+    color: hsl(30, 100%, 66%);
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.sound-list .record:hover, .costume-list .write-costume:hover {
+    background-color: hsl(32, 85%, 86%);
+}
+
+.sound-list .record .fa-microphone {
+    height: 3rem;
+    width: 3rem;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 3rem;
+}
+
+.sound-list .sound-icon {
+    height: 50px;
+    width: 50px;
+}
+
+.sound-list .item {
+    cursor: pointer;
+    color: hsl(20, 2%, 69%);
+    padding: 0 0.5rem;
+    height: 4rem;
+    width: 100%;
+    background-color: hsl(30, 17%, 98%);
+    border-radius: 0.5rem;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.sound-list .sound-icon {
+    text-align: center;
+    font-size: 1.6rem;
+    line-height: 50px;
+}
+
+.sound-list .sound-name {
+    -webkit-flex: 1 0 auto;
+    flex: 1 0 auto;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.sound-list .sound-btns {
+    font-size: 1.4rem;
+    width: 3rem;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.sound-list .add-more-sound {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    height: 3.5rem;
+    width: 284px;
+    border: 4px dotted hsl(20, 2%, 69%);
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 3rem;
+    text-indent: 0.5rem;
+    color: hsl(20, 2%, 69%);
+    cursor: pointer;
+    position: absolute;
+    bottom: 1rem;
+}
+
+.sound-list .add-more-sound:hover {
+    color: hsl(30, 100%, 66%);
+    border-color: hsl(30, 100%, 66%);
+}
+
+.sound-list .add-more-sound .fa-plus {
+    font-size: 2rem;
+}

@@ -1,0 +1,229 @@
+.cm-dialog-box{
+    position:fixed;;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    overflow:hidden;
+    z-index:100;
+    visibility:hidden;
+}
+.cm-dialog-box .dialog-wrap{
+  background:rgba(0,0,0,0.5);
+  width:100%;
+  height:100%;
+  opacity:0.01;
+  transition:all 0.3s ease-out;
+  -moz-transition:all 0.3s ease-out;
+  -webkit-transition:all 0.3s ease-out;
+}
+.cm-dialog-box .dialog{
+  position:relative;
+  width:488px;
+  height:400px;
+  background:#EBF0F4;
+  border-radius:5px;
+  transform:scale(2);
+  -moz-transform:scale(2);
+  -webkit-transform:scale(2);
+  transition:all 0.3s ease-out;
+  -moz-transition:all 0.3s ease-out;
+  -webkit-transition:all 0.3s ease-out;
+  box-shadow:0px 2px 3px rgba(0,0,0,0.5);
+}
+.cm-dialog-box .dialog-title{
+    position:relative;
+  z-index:102;
+  text-align:center;
+  color:#fff;
+  border-bottom:3px solid #E93419;
+  font-size:14px;
+  background:#FF5337;font-size:24px; color:#fff;height:50px;line-height:50px;border-radius:0;transform:scale(1.03);padding:0px 10px 0px 10px;
+  -webkit-transform:scale(1.03);
+}
+.cm-dialog-box .dialog-content{
+    z-index:101;
+  overflow:scroll;
+  box-sizing:border-box;
+  word-break:break-all;
+  border-top:5px solid #CECECE;
+  background:#EBF0F4;
+  position:relative;
+  width:100%;
+  padding:6px;
+}
+.cm-dialog-box .dialog-button{
+    font-size: 13px;
+    flex:1;
+    -webkit-box-flex:1;
+    padding:0;
+    color:#fff;
+    text-align:center;
+    border:0;
+    background: #ccc;
+    display:inline-block;
+    float:left;
+    height:44px;
+    line-height:44px;
+    box-shadow: inset 0px 2px 2px rgba(117, 117, 117, 0.21);
+    transition:all 0.2s ease-in-out;
+    -moz-transition:all 0.2s ease-in-out;
+    -webkit-transition:all 0.2s ease-in-out;
+    opacity:0.8;
+    cursor:pointer;
+}
+.cm-dialog-box .dialog-button:hover{
+  opacity:0.9;
+}
+.cm-dialog-box .dialog-button:first-child{
+  border-radius:0 0 0px 5px;
+}
+.cm-dialog-box .dialog-button:last-child{
+  border-radius:0 0 5px 0px;
+  background: rgba(126,211,33,1);
+}
+.cm-dialog-box .dialog-button.loading{
+  background:#eee;
+}
+.cm-dialog-box .dialog-tabs,.incontent-tabs{
+  position:absolute;
+  bottom:100%;left:0;
+  z-index:101;
+  display:box;
+  display:-moz-box;
+  display:-webkit-box;
+  box-orient:horizontal;
+  -moz-box-orient:horizontal;
+  -webkit-box-orient:horizontal;
+  height:36px;
+  width:100%;
+}
+.cm-dialog-box .incontent-tabs{
+	position:static;
+}
+.cm-dialog-box .dialog-tab,.incontent-tab{
+  height:30px;
+  line-height:30px;
+  margin-top:6px;
+  box-shadow:2px -1px 1px rgba(0,0,0,0.2);
+  text-align:center;
+  cursor:pointer;
+  background:#056CB1;
+  width:90px;
+  border-radius:5px 5px 0 0;
+  color:#3498db;
+  display:block;
+}
+.cm-dialog-box .dialog-tab.active,.incontent-tab.active{
+  margin:0;
+  height:36px;
+  line-height:36px;
+  background:rgb(72, 158, 215);
+  color:#fff;
+}
+.cm-dialog-box .dialog-wrap[mode="tabs"] .dialog-tabs{
+    display:none;
+}
+.cm-dialog-box .dialog-wrap[mode="tabs"] .dialog{
+  border-radius:0 5px 5px 5px;
+}
+.cm-dialog-box .dialog-wrap[mode="tabs"] .dialog-content{
+  border-radius:0 5px 5px 5px;
+}
+.cm-dialog-box .dialog-wrap[mode="tabs"] .dialog-title{
+  display:none;
+}
+.cm-dialog-box .dialog-tab-content{
+	display:none;
+}
+.cm-dialog-box .dialog-wrap .input-wrap{
+    width:100%!important;
+    height:38px!important;
+}
+.cm-dialog-box .dialog-buttons{
+    width:100%;
+}
+
+.cm-dialog-box .dialog-decoration-circle{
+    width:180px;
+    height:180px;
+    border-radius:90px;
+    background:#944296;
+    border:19px solid #C46EC5;
+    display:inline-block;
+    margin-top:-144px;
+}
+.cm-dialog-box .dialog-decoration1{
+    width:100%;border-top: 22px solid #CD2F1C;border-right: 8px solid transparent;border-left: 8px solid transparent;
+    box-sizing:border-box;
+    padding-right:6%;
+    position:relative;
+    z-index:99;
+}
+.cm-dialog-box .dialog-decoration2{
+    width:100%;border-bottom: 22px solid #CD2F1C;border-right: 8px solid transparent;border-left: 8px solid transparent;
+    box-sizing:border-box;
+    padding-right:6%;
+    position:relative;
+    z-index:99;
+}
+.cm-dialog-box .dialog-decorations-wrap{
+    position:absolute;
+    top:20px;
+    width:112%;
+    text-align:center;
+    left:-6%;
+}
+
+.cm-dialog-box .dialog-codemao{
+    background-image: url(http://7xpmmk.com2.z0.glb.qiniucdn.com/images/%E7%BC%96%E7%A8%8B%E7%8C%AB-%E4%BF%9D%E5%AD%98%20copy.png);
+    background-size: 100%;
+    width: 102px;
+    height: 127px;
+    z-index: 103;
+    position:absolute;
+    top:-123px;
+    left:50%;
+    margin-left:-51px;
+}
+
+.cm-dialog-box .btn-dialog-close{
+    background-image:url(http://7xpmmk.com2.z0.glb.qiniucdn.com/images/common/Rectangle%209%20Copy%203.png);
+    height:20px;
+    width:20px;
+    background-size:100%;
+    position:absolute;
+    top:14px;
+    right:18px;
+    z-index:103;
+    cursor:pointer;
+}
+
+.cm-dialog-box .vh-center {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.cm-dialog-box input, .cm-dialog-box textarea, .cm-dialog-box keygen, .cm-dialog-box select, .cm-dialog-box button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em 0em 0em 0em;
+    font: 11px BlinkMacSystemFont;
+}
+
+.cm-dialog-box  input{
+    height:100%;width:100%;padding:0 10px 0 10px;
+}

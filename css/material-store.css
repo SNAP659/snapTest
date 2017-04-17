@@ -1,0 +1,950 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+#material-store-wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 200;
+    background-color: rgba(0, 0, 0, 0.68);
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    display: none;
+}
+
+#material-store-wrapper.open {
+    display: -webkit-flex;
+    display: flex;
+}
+
+#material-store {
+    font-size: 1rem;
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 61.1875em;
+    min-width: 61.1875em;
+    height: 38.6875em;
+    min-height: 38.6875em;
+    position: relative;
+    /*left: 50%;*/
+    /*top: 50%;*/
+    /*margin-left: -30.59375em;*/
+    /*margin-top: -19.34375em;*/
+    font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
+#material-store .money-wrapper {
+    padding: 0 .25em;
+    margin-left: .25em;
+    position: absolute;
+    bottom: 2em;
+    z-index: 10;
+    right: 2em;
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store%2Fmoney-wrapper.png);
+    background-repeat: no-repeat;
+    width: 12em;
+    height: 4em;
+}
+
+#material-store .money-wrapper .money-amount {
+    width: 100%;
+    height: 100%;
+    padding: .875em 2.8em;
+    font-size: 1.25em;
+    color: white;
+    text-align: center;
+}
+
+#material-store .prev-tab-btn {
+    position: absolute;
+    width: 6.25em;
+    top: 13.125em;
+    height: 11.0625em;
+    left: 1.375em;
+    cursor: pointer;
+}
+
+#material-store .next-tab-btn {
+    position: absolute;
+    width: 6.25em;
+    top: 13.125em;
+    height: 11.0625em;
+    right: 1.375em;
+    cursor: pointer;
+}
+
+#material-store .close-material-store-btn {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store%2Fclose-material-store-btn.png);
+    width: 4.125em;
+    height: 4.3125em;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    right: 1.5em;
+    top: 1em;
+    cursor: pointer;
+}
+
+#material-store .material-store-dialog-window {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.69);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    border-radius: 4em;
+}
+
+#material-store .material-store-dialog-wrapper {
+    width: 27.4375em;
+    height: 17.5625em;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/goumaiwupin-lv.png);
+}
+
+#material-store .material-store-dialog-wrapper .content {
+    width: 20.25em;
+    height: 7.5em;
+    position: absolute;
+    top: 3.75em;
+    left: 3.5em;
+    padding: 1rem;
+    text-align: center;
+}
+
+#material-store .material-store-dialog-wrapper .content .msg-text {
+    font-weight: bolder;
+    font-size: 1.25em;
+}
+
+#material-store .material-store-dialog-wrapper .confirm-btn {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 1em;
+    border: .1875em solid #01346a;
+    box-shadow: inset 0 -0.3125em #14749a, 0 .125em .125em 0.0625em rgba(0, 0, 0, 0.5);
+    background-color: #14bde6;
+    width: 5.875em;
+    height: 3em;
+    background-image: radial-gradient(50% 50% at 50% 50%, rgba(33, 150, 243, 0.71), rgba(118, 194, 255, 0.71)), radial-gradient(90% 50% at 50% 50%, #2196f3, #76c2ff);
+    text-align: center;
+    line-height: 2.25em;
+    font-weight: bolder;
+    position: absolute;
+    left: 50%;
+    margin-left: -2.9375em;
+    bottom: 2.5em;
+    cursor: pointer;
+    color: white;
+}
+
+#material-store .material-store-dialog-wrapper .close-btn {
+    width: 2.5em;
+    height: 2.5em;
+    position: absolute;
+    right: 1.25em;
+    top: 1.25em;
+    cursor: pointer;
+}
+
+#material-store .store-item-preview-window {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.69);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    border-radius: 4em;
+}
+
+#material-store .store-item-preview-wrapper {
+    width: 27.4375em;
+    height: 17.5625em;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#material-store .store-item-preview-wrapper .content {
+    width: 20.25em;
+    height: 7.5em;
+    position: absolute;
+    top: 3.75em;
+    left: 3.5em;
+    padding: 1rem;
+    text-align: center;
+}
+
+#material-store .store-item-preview-wrapper .content .store-item-name {
+    font-weight: bolder;
+    font-size: 1.25em;
+}
+
+#material-store .store-item-preview-wrapper .content .store-item-description {
+    margin: .5em auto;
+}
+
+#material-store .store-item-preview-wrapper .preview-window {
+    background-color: rgb(5, 97, 153);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 9.375em;
+    height: 12em;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    box-shadow: 0 0 0 .25em white, 0 0 0 .375em #056199;
+    border-radius: .25em;
+    position: absolute;
+    left: 50%;
+    margin-left: -4.6875em;
+    top: -9em;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+#material-store .preview-window .target-img {
+    max-width: 9.375em;
+    max-height: 12em;
+}
+
+#material-store .store-item-preview-wrapper .preview-window.audio {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/music-play-btn.png);
+    background-size: auto;
+    background-position: center;
+    background-color: #009598;
+}
+
+#material-store .store-item-preview-wrapper .buy-btn {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 1em;
+    border: .1875em solid #01346a;
+    box-shadow: inset 0 -0.3125em #14749a, 0 .125em .125em 0.0625em rgba(0, 0, 0, 0.5);
+    background-color: #14bde6;
+    width: 5.875em;
+    height: 3em;
+    background-image: radial-gradient(50% 50% at 50% 50%, rgba(33, 150, 243, 0.71), rgba(118, 194, 255, 0.71)), radial-gradient(90% 50% at 50% 50%, #2196f3, #76c2ff);
+    text-align: center;
+    line-height: 2.25em;
+    font-weight: bolder;
+    position: absolute;
+    left: 50%;
+    margin-left: -2.9375em;
+    bottom: 2.5em;
+    cursor: pointer;
+    color: white;
+}
+
+#material-store .store-item-preview-wrapper .buy-btn.not-enough-money {
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    pointer-events: none;
+}
+
+#material-store .store-item-preview-wrapper .close-btn {
+    width: 2.5em;
+    height: 2.5em;
+    position: absolute;
+    right: 1.25em;
+    top: 1.25em;
+    cursor: pointer;
+}
+
+#material-store .buy-result-window {
+    width: 27.4375em;
+    height: 17.5625em;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#material-store .buy-result-window .content {
+    width: 20.25em;
+    height: 7.5em;
+    line-height: 5.5em;
+    position: absolute;
+    top: 3.75em;
+    left: 3.5em;
+    padding: 1rem;
+    text-align: center;
+}
+
+#material-store .buy-result-window .description {
+    font-size: 1.55em;
+    font-weight: bolder;
+}
+
+#material-store .buy-result-window.error .description {
+    color: red;
+}
+
+#material-store .scroll-wrapper {
+    margin: 0 auto;
+    width: 46em;
+    height: 31.6875em;
+    position: relative;
+}
+#material-store .material-wrapper {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+#material-store .header {
+    width: 44.125em;
+    height: 3.3125em;
+    margin: 1em auto 1.25em;
+    display: flex;
+    justify-content: flex-end;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#material-store .header .header-icon {
+    width: 4.5em;
+    height: 5.0625em;
+    cursor: pointer;
+    margin: -0.5em 0.5em;
+    background-repeat: no-repeat;
+}
+
+#material-store .header .header-icon.juese-icon {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/header-icon-sprite-1.png);
+    background-position: -0.5em -28.3125em;
+}
+
+#material-store .header .header-icon.juese-icon.selected {
+    background-position: -0.5em -22.75em;
+}
+
+#material-store .header .header-icon.beijing-icon {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/header-icon-sprite-1.png);
+    background-position: -0.5em -17.1875em;
+}
+
+#material-store .header .header-icon.beijing-icon.selected {
+    background-position: -0.5em -11.625em;
+}
+
+#material-store .header .header-icon.yinyue-icon {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/header-icon-sprite-1.png);
+    background-position: -0.5em -50.5625em;
+}
+
+#material-store .header .header-icon.yinyue-icon.selected {
+    background-position: -0.5em -45em;
+}
+
+#material-store .header .header-icon.weixin-icon {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/upload_06.png);
+    background-size: 100% 100%;
+}
+
+#material-store .header .header-icon.weixin-icon.selected {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/upload_03.png);
+}
+
+#material-store .header .header-icon.activity-icon {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/header-icon-sprite-1.png);
+    background-position: -0.25em -5.8125em;
+}
+
+#material-store .header .header-icon.activity-icon.selected {
+    background-position: -0.25em -.25em;
+}
+
+#material-store .my-stuff {
+    border-radius: 1em;
+    box-shadow: 0 0 0 .125em white, 0 0 0 1em #E2E2D9, 0 0 0 1.25em #C3C3C3, 0 0 0 1.5em #1B4963;
+    width: 41em;
+    min-height: 10em;
+    margin: 1.5em auto;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    background-repeat: no-repeat;
+    background-position: 0 bottom;
+}
+
+#material-store .my-stuff .item {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 6.5em;
+    height: 9em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 1.45em;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    box-shadow: 0 0 0 .25em white, 0 0 0 .375em #056199;
+    border-radius: .25em;
+    position: relative;
+}
+
+#material-store .my-stuff .new-icon {
+    position: absolute;
+    z-index: 10;
+    top: -1em;
+    left: .25em;
+}
+
+#material-store .my-stuff .delete-weixin-item-btn {
+    position: absolute;
+    color: #F44336;
+    z-index: 10;
+    font-size: 1.25em;
+    border-radius: 50%;
+    background-color: rgba(60, 60, 60, 0.65);
+    width: 1em;
+    height: 1em;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    cursor: pointer;
+    right: -.5em;
+    top: -.5em;
+}
+
+#material-store .my-stuff .item-image-bg {
+    background-color: #056199;
+}
+
+#material-store .my-stuff .item-image-bg .target-img {
+    width: 6.5em;
+    height: 9em;
+    border-radius: .25em;
+}
+
+#material-store .my-stuff .item-image {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: rgb(5, 97, 153);
+}
+
+#material-store .my-stuff .item-image .target-img {
+    max-width: 6.5em;
+    max-height: 9em;
+}
+
+#material-store .my-stuff .item-image-set {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: rgb(5, 97, 153);
+}
+
+#material-store .my-stuff .item-image-set .target-img {
+    max-width: 6.5em;
+    max-height: 9em;
+    border-radius: .25em;
+}
+
+#material-store .my-stuff .item.item-audio {
+    background-color: #009598;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#material-store .my-stuff .item .audio-icon {
+    width: 4.4375em;
+    height: 4.4375em;
+    cursor: pointer;
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/music-play-btn.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#material-store .my-stuff .item .audio-icon.playing {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/music-stop-btn.png);
+}
+
+#material-store .my-stuff .item .name-label {
+    font-weight: bolder;
+    width: 100%;
+    height: 1.5em;
+    background-color: #ffcb4b;
+    top: 0;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    color: #0b2f4c;
+    line-height: 1.5em;
+    border-top-left-radius: .25em;
+    border-top-right-radius: .25em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#material-store .my-stuff .item .use-btn {
+    width: 100%;
+    height: 1.5em;
+    background-color: #ffcb4b;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    color: white;
+    line-height: 1.5em;
+    border-bottom-left-radius: .25em;
+    border-bottom-right-radius: .25em;
+    cursor: pointer;
+}
+
+#material-store .store-stuff {
+    width: 41em;
+    min-height: 6.25em;
+    margin: 1em auto 1.5em;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#material-store .store-stuff .item {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 6.5em;
+    height: 9em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 1.45em;
+    -webkit-flex: 0 0 auto;
+    flex: 0 0 auto;
+    box-shadow: 0 0 0 .25em white, 0 0 0 .375em #056199;
+    border-radius: .25em;
+    position: relative;
+    cursor: pointer;
+}
+
+#material-store .store-stuff .item-image-bg {
+    background-color: #056199;
+}
+
+#material-store .store-stuff .item-image-bg .target-img {
+    width: 6.5em;
+    height: 9em;
+    border-radius: .25em;
+}
+
+#material-store .store-stuff .item-image {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: rgb(5, 97, 153);
+}
+
+#material-store .store-stuff .item-image .target-img {
+    max-width: 6.5em;
+    max-height: 9em;
+}
+
+#material-store .store-stuff .item-image-set {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    background-color: rgb(5, 97, 153);
+}
+
+#material-store .store-stuff .item-image-set .target-img {
+    max-width: 6.5em;
+    max-height: 9em;
+}
+
+#material-store .store-stuff .item.audio {
+    background-color: #009598;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#material-store .store-stuff .item .audio-icon {
+    width: 4.4375em;
+    height: 4.4375em;
+    cursor: pointer;
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/music-play-btn.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#material-store .store-stuff .item .audio-icon.playing {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/music-stop-btn.png);
+}
+
+#material-store .store-stuff .item .gold-label {
+    font-weight: bolder;
+    width: 100%;
+    height: 1.5em;
+    background-color: #ffcb4b;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    color: white;
+    line-height: 1.5em;
+    border-bottom-left-radius: .25em;
+    border-bottom-right-radius: .25em;
+}
+
+#material-store .store-stuff .name-label {
+    font-weight: bolder;
+    width: 100%;
+    height: 1.5em;
+    background-color: #ffcb4b;
+    top: 0;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    color: #0b2f4c;
+    line-height: 1.5em;
+    border-top-left-radius: .25em;
+    border-top-right-radius: .25em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#material-store .divider {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/daishoujidesucai.png);
+    width: 43.125em;
+    height: 2em;
+    margin: 3em auto .5em;
+}
+
+#material-store .no-stuff {
+    width: 100%;
+    height: 10em;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+#material-store .no-stuff .no-stuff-image {
+    width: 27em;
+    height: 2.875em;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+#material-store.weixin .my-stuff {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/city-lvse.png);
+    background-color: rgb(120, 173, 55);
+    min-height: 20em;
+}
+
+#material-store .qr-code-image {
+    width: 9.0625em;
+    height: 9.25em;
+    position: absolute;
+    left: .5em;
+    top: .45em;
+    background-color: white;
+    background-size: 100% 100%;
+}
+
+#material-store .weixin-scan {
+    border-radius: 1em;
+    box-shadow: 0 0 0 .125em white, 0 0 0 1em #E2E2D9, 0 0 0 1.25em #C3C3C3, 0 0 0 1.5em #1B4963;
+    width: 41em;
+    min-height: 10em;
+    margin: 1.5em auto 4em;
+    background-color: rgb(120, 173, 55);
+    position: relative;
+}
+
+#material-store .weixin-scan .prompt-text {
+    background: url(https://o44j7l4g3.qnssl.com/codemao/material-store/sprite-1.png) no-repeat -9.1875em -1.4375em;
+    width: 23.125em;
+    height: 4.25em;
+    position: absolute;
+    left: 13.25em;
+    top: 2.5em;
+}
+
+#material-store .upload-material {
+    width: 6.5em;
+    height: 9em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 1.45em;
+    background-color: #FACB34;
+    box-shadow: 0 0 0 .25em white, 0 0 0 .375em #056199;
+    border-radius: .25em;
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/sprite-1.png);
+    background-repeat: no-repeat;
+    background-position: -.4375em -.25em;
+    cursor: pointer;
+}
+
+#material-store .upload-window {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.69);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    border-radius: 4em;
+}
+
+#material-store .upload-window .wrapper {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/goumaiwupin-lv.png);
+    width: 27.4375em;
+    height: 17.5625em;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#material-store .upload-window .wrapper .close-btn {
+    width: 2.5em;
+    height: 2.5em;
+    position: absolute;
+    right: 1.25em;
+    top: 1.25em;
+    cursor: pointer;
+}
+
+#material-store .upload-window .content {
+    width: 20.25em;
+    height: 7.5em;
+    position: absolute;
+    top: 3.75em;
+    left: 3.5em;
+    padding: 1rem;
+    text-align: center;
+    font-weight: bolder;
+}
+
+#material-store .upload-window .progress-wrapper {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    width: 20.25em;
+    height: 7.5em;
+    position: absolute;
+    top: 3.75em;
+    left: 3.5em;
+    padding: 1rem;
+    text-align: center;
+    font-weight: bolder;
+}
+
+#material-store .upload-window .progress-bar {
+    height: 2.25em;
+    width: 15em;
+    background-color: rgba(33, 150, 243, 0.34);
+    border-radius: 1em;
+}
+
+#material-store .upload-window .progress-bar-inner {
+    background-color: #2185d0;
+    height: 100%;
+    width: 0;
+    border-radius: 1rem;
+    position: relative;
+    line-height: 2.25em;
+    text-align: right;
+    color: white;
+}
+
+#material-store .upload-window .progress-bar-inner::after {
+    content: '';
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    border-radius: 1em;
+    -webkit-animation: progress-active 2s ease infinite;
+    animation: progress-active 2s ease infinite;
+}
+
+@-webkit-keyframes progress-active {
+    0% {
+        opacity:.3;
+        width:0
+    }
+    100% {
+        opacity:0;
+        width:100%
+    }
+}
+@keyframes progress-active {
+    0% {
+        opacity:.3;
+        width:0
+    }
+    100% {
+        opacity:0;
+        width:100%
+    }
+}
+#material-store .upload-window .cancel-btn {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 1em;
+    border: .1875em solid #01346a;
+    box-shadow: inset 0 -0.3125em #14749a, 0 .125em .125em 0.0625em rgba(0, 0, 0, 0.5);
+    background-color: #14bde6;
+    width: 5.875em;
+    height: 3em;
+    background-image: radial-gradient(50% 50% at 50% 50%, rgba(33, 150, 243, 0.71), rgba(118, 194, 255, 0.71)), radial-gradient(90% 50% at 50% 50%, #2196f3, #76c2ff);
+    text-align: center;
+    line-height: 2.25em;
+    font-weight: bolder;
+    position: absolute;
+    left: 50%;
+    margin-left: -2.9375em;
+    bottom: 2.5em;
+    cursor: pointer;
+    color: white;
+}
+
+#material-store.weixin .header {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/shangchuan-header.png);
+}
+
+#material-store.activity .header {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/activity-header.png);
+}
+
+#material-store.juese .store-item-preview-wrapper {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/goumaiwupin-lan.png);
+}
+
+#material-store.juese .my-stuff {
+    background-color: #2EBCFA;
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/city-lanse.png);
+}
+
+#material-store.juese .my-stuff .no-stuff-image {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/tianjia-lanse.png);
+}
+
+#material-store.juese .header {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/juese-header.png);
+}
+
+#material-store.juese .buy-result-window {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/goumaiwupin-lan.png);
+}
+
+#material-store.beijing .store-item-preview-wrapper {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/goumaiwupin-lv.png);
+}
+
+#material-store.beijing .my-stuff {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/city-lvse.png);
+    background-color: rgb(120, 173, 55);
+}
+
+#material-store.beijing .my-stuff .no-stuff-image {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/tianjia-lvse.png);
+}
+
+#material-store.beijing .header {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/beijing-header.png);
+}
+
+#material-store.beijing .buy-result-window {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/goumaiwupin-lv.png);
+}
+
+#material-store.yinyue .store-item-preview-wrapper {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/goumaiwupin-huang.png);
+}
+
+#material-store.yinyue .my-stuff {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/city-huangse.png);
+    background-color: #FFB420;
+}
+
+#material-store.yinyue .my-stuff .no-stuff-image {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/tianjia-huangse.png);
+}
+
+#material-store.activity .my-stuff {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/city-huangse.png);
+    background-color: #FFB420;
+}
+
+#material-store.yinyue .header {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/yinyue-header.png);
+}
+
+#material-store.yinyue .buy-result-window {
+    background-image: url(https://o44j7l4g3.qnssl.com/codemao/material-store/goumaiwupin-huang.png);
+}

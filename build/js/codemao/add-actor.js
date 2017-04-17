@@ -1,0 +1,1 @@
+function openAddActor(){document.getElementById("add-an-actor").getAttributeNode("style").value="display:block;"}function closeAddActor(){document.getElementById("add-an-actor").getAttributeNode("style").value="display:none;"}function openLibrary(){world.children[0].addNewSprite()}function paintNew(){world.children[0].paintNewSprite()}

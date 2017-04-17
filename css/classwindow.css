@@ -1,0 +1,71 @@
+/*控制选课窗口界面的样式*/
+div {
+    box-sizing: border-box;
+}
+.tc-active {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(38, 38, 38, 0.80);
+}
+.tc-inactive {
+    display: none;
+}
+
+
+#tc-wrapper {
+    width: 41.25rem;
+    height: 20rem;
+    margin: 6.25rem auto;
+    background-color: gray;
+    border-radius: .5rem;
+    overflow-y: scroll;
+}
+#share-window{
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    width: 25%;
+    height: 20%;
+    background-color: rgb(211,211,211);
+}
+.share-btn{
+    color: hsl(0, 0%, 33%);
+    cursor: pointer;
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    /* background-color: rgba(0,0,0,1); */
+    line-height: 3.4rem;
+    text-align: center;
+    margin-left: 27rem;
+}
+.share-btn > img {
+    width: 1.875rem;
+    height: 1.875rem;
+}
+#shareUrl{
+    width: 80%;
+    height: 25px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+.tc-item {
+    width: 8.75rem;
+    height: 8.75rem;
+    float: left;
+    margin: .625rem;
+    background-color: white;
+    color: hsl(0, 2%, 43%);
+    font-weight: bold;
+    border-radius: .5rem;
+    text-align: center;
+    line-height: 8.75rem;
+    cursor: pointer;
+}

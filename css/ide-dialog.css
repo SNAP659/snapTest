@@ -1,0 +1,544 @@
+@-webkit-keyframes  shineGolden {
+    from { -webkit-box-shadow: 0 0 15px #bbb; }
+    50% { -webkit-box-shadow: 0 0 20px #faeaa3; }
+    to { -webkit-box-shadow: 0 0 15px #bbb; }
+}
+
+.gradient-green {
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0,#74b52d),to(#83cd36));
+    background-image: -webkit-linear-gradient(top,#83cd36 0%,#74b52d);
+    background-image: -moz-linear-gradient(top,#83cd36 0,#74b52d);
+    background-image: -ms-linear-gradient(top,#83cd36 0,#74b52d);
+    background-image: linear-gradient(top, #83cd36 0%, #74b52d);
+}
+
+#open-project-dialog-container {
+    width: 100%;
+    height: 100%;
+
+    position: fixed;
+    z-index: 100;
+}
+
+.ide-dialog {
+    width: 40%;
+    height: 20%;
+
+    position: absolute;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 200;
+
+    margin: auto;
+
+    background-color: #3c3c3c;
+    color: #fbfbfb;
+    border: 2px solid #474747;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#save-project-dialog,
+#open-project-dialog{
+    width: 80%;
+    height: 80%;
+}
+
+.dialog-background {
+    width: 100%;
+    height: 100%;
+
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 99;
+
+    background-color: #000;
+    opacity: 0.8;
+
+}
+
+.ide-dialog .dialog-header {
+    width: 100%;
+    height: 54px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+
+    top: 0;
+    left: 0;
+
+    padding: 15px;
+
+    background-color: #272727;
+}
+
+.dialog-header h2 {
+    flex-grow: 1;
+}
+
+.ide-dialog .dialog-header .dialog-close{
+    height: 40px;
+    width: 41px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+
+    background-color: #3c3c3f;
+}
+
+.ide-dialog .dialog-header .dialog-close:hover{
+    background-color: #999;
+}
+
+.ide-dialog .dialog-header .dialog-close > div{
+    background: url('http://7xli7a.com2.z0.glb.qiniucdn.com/imgs%2Fide_icons.svg') no-repeat -654px -129px;
+    width: 17px;
+    height: 16px;
+}
+
+.ide-dialog .ide-dialog-content {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+    height: calc(100% - 94px);
+
+    padding: 20px;
+    line-height: 30px;
+
+    background-color: #3c3c3f;
+}
+
+.ide-dialog .dialog-footer{
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+    height: 40px;
+    justify-content: space-around;
+    -webkit-justify-content: space-around;
+    align-items: center;
+    -webkit-align-items: center;
+}
+
+.ide-dialog .ide-dialog-button {
+    height: 40px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0,#333333),to(#3c3c3f));
+    background-image: -webkit-linear-gradient(top,#3c3c3f 0%,#333333);
+    background-image: -moz-linear-gradient(top,#3c3c3f 0,#333333);
+    background-image: -ms-linear-gradient(top,#3c3c3f 0,#333333);
+    background-image: linear-gradient(top, #3c3c3f 0%, #333333);
+
+    cursor: pointer;
+}
+
+.ide-dialog .ide-dialog-button.gradient-green {
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0,#74b52d),to(#83cd36));
+    background-image: -webkit-linear-gradient(top,#83cd36 0%,#74b52d);
+    background-image: -moz-linear-gradient(top,#83cd36 0,#74b52d);
+    background-image: -ms-linear-gradient(top,#83cd36 0,#74b52d);
+    background-image: linear-gradient(top, #83cd36 0%, #74b52d);
+}
+
+.ide-dialog .ide-dialog-button:hover {
+    background: #666;
+}
+
+#open-project-dialog .project-list-thumbnail{
+    width: calc(100% - 30px);
+    width: -moz-calc(100% - 30px);
+    width: -webkit-calc(100% - 30px);
+
+    position: absolute;
+    top: 54px;
+    bottom: 0;
+
+    overflow-y: scroll;
+
+    margin:15px;
+
+    background-color: #3c3c3c;
+    scrollbar-track-color: transparent;
+    -ms-scrollbar-track-color: transparent;
+}
+.project-list-thumbnail::-webkit-scrollbar {
+    width: 10px;
+
+    padding-top: 5px;
+}
+.project-list-thumbnail::-webkit-scrollbar-thumb    {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+
+    background:#8f8f8f;
+}
+
+.project-list-thumbnail ul {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+    align-items: flex-start;
+    -webkit-align-items: flex-start;
+    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+}
+
+.project-list-thumbnail li {
+    width: 124px;
+    margin: 15px;
+
+    position: relative;
+    overflow: hidden;
+
+    background-color: #464646;
+    list-style: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.project-list-thumbnail li:hover {
+    background-color: #575757;
+    /*outline: #fff outset 1px;*/
+    -webkit-box-shadow: 0 0 15px #bbb;
+    /*-webkit-animation-name: shineGolden;*/
+    /*-webkit-animation-duration: 3s;*/
+    /*-webkit-animation-iteration-count: infinite;*/
+}
+
+.project-list-thumbnail li > .project-delete{
+    display: none;
+    height: 24px;
+    width: 25px;
+    /*width: 186px;*/
+
+    position: absolute;
+    top:0;
+    right:0;
+
+    background-color: transparent;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.project-list-thumbnail li:hover > .project-delete{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+
+    background-color: #3c3c3f;
+    opacity: 0.5;
+}
+
+.project-list-thumbnail li > .project-delete:hover{
+    background-color: #c3c3c3;
+}
+
+.project-list-thumbnail li > .project-delete > div{
+    background: url('http://7xli7a.com2.z0.glb.qiniucdn.com/imgs%2Fide_icons.svg') no-repeat -469px -206px;
+    width: 11px;
+    height: 10px;
+}
+
+.project-list-thumbnail li > img{
+    /*width: 186px;*/
+    height: 180px;
+}
+
+.project-list-thumbnail li > h3,
+.project-list-thumbnail li > h4{
+    margin: 5px;
+
+    text-align: center;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: 14px;
+}
+
+#save-project-dialog-container .ide-dialog {
+    min-width: 600px;
+    min-height: 640px;
+}
+
+#save-project-dialog-container .project-list-container {
+    display: flex;
+    display: -webkit-flex;
+    width: 100%;
+
+    position: absolute;
+    top: 54px;
+    bottom: 70px;
+
+}
+
+#save-project-dialog-container .project-info {
+    min-width: 380px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    flex-shrink: 0;
+    -webkit-flex-shrink: 0;
+
+    padding: 15px;
+}
+
+#save-project-dialog-container .project-thumbnail-container {
+    min-height: 450px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    align-items: center;
+    -webkit-align-items: center;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    background-color: #2B2B2B;
+}
+
+#save-project-dialog-container .thumbnail-title {
+    width: 40px;
+    height: 450px;
+
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+    text-align: center;
+    line-height: 40px;
+
+    background-color: #666;
+}
+
+#save-project-dialog-container .project-thumbnail {
+    height: 450px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    flex-grow: 1;
+    -webkit-flex-grow: 1;
+}
+
+#save-project-dialog-container .project-name {
+    display: flex;
+    display:-webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+
+    margin-top: 5px;
+}
+
+#save-project-dialog-container .project-name > h3{
+    flex-shrink: 0;
+    -webkit-flex-shrink: 0;
+
+    margin: 5px;
+}
+
+#save-project-dialog-container .project-name > input{
+    width: 100%;;
+    font-size: 20px;
+
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border-style: none;
+
+    background-color: #2B2B2B;
+    color: #f3f3f3;
+}
+#save-project-dialog-container .project-name > input:focus{
+    outline: none;
+}
+
+#save-project-dialog .project-list-thumbnail{
+    overflow-y: scroll;
+}
+
+#save-project-dialog-container .project-list {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    min-width: 200px;
+    flex-grow: 1;
+
+    margin: 15px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    overflow-y: hidden;
+    -ms-overflow-y: hidden;
+
+    background-color: #2B2B2B;
+}
+
+#save-project-dialog-container .project-list > ul{
+    margin: 5px;
+
+    overflow: auto;
+}
+
+#save-project-dialog-container .project-list > ul::-webkit-scrollbar {
+    width: 10px;
+
+    padding-top: 5px;
+}
+
+#save-project-dialog-container .project-list > ul::-webkit-scrollbar-thumb    {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+
+    background:#8f8f8f;
+}
+
+#save-project-dialog-container .project-list > ul > li{
+    list-style: none;
+}
+
+#save-project-dialog-container .current-item {
+    background-color: #666;
+
+    -webkit-animation-name: shineGolden;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+#save-project-dialog-container .project-list > h3 {
+    flex-shrink: 0;
+    -webkit-flex-shrink: 0;
+
+    padding: 10px;
+
+    background-color: #666;
+    -webkit-box-shadow: 1px 0 0 1px #555;
+    -moz-box-shadow: 1px 0 0 1px #555;
+    box-shadow: 1px 0 0 1px #555;
+}
+
+#save-project-dialog-container .project-item {
+    padding: 10px;
+}
+
+#save-project-dialog-container .project-item:hover {
+    background-color: #505050;
+}
+
+#save-project-dialog-container .dialog-buttons {
+    width: 100%;
+    height: 70px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0,#333333),to(#3c3c3f));
+    background-image: -webkit-linear-gradient(top,#3c3c3f 0%,#333333);
+    background-image: -moz-linear-gradient(top,#3c3c3f 0,#333333);
+    background-image: -ms-linear-gradient(top,#3c3c3f 0,#333333);
+    background-image: linear-gradient(top, #3c3c3f 0%, #333333);
+
+    position: absolute;
+    bottom: 0;
+}
+
+#save-project-dialog-container .project-save-button {
+    width: 120px;
+    height: 50px;
+
+    border: 1px solid hsla(0, 0%, 0%, 0.4);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 50px;
+
+    background-color: #424242;
+
+}
+
+#save-project-dialog-container .project-save-button:hover {
+    background-color: #666;
+}
+
+#triple-confirm-dialog {
+    display: inline-block;
+    width: 40%;
+    height: auto;
+
+    position: relative;
+
+
+    vertical-align: middle;
+    text-align: center;
+
+    z-index: 1000;
+}
+
+#triple-confirm-dialog-container{
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    text-align: center;
+
+    z-index: 1000;
+}
+
+#triple-confirm-dialog-container:after{
+    content:" ";
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    width: 0;
+    height: 100%;
+}
+
+#triple-confirm-dialog-container .dialog-background{
+    z-index: 999;
+}
+

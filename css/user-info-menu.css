@@ -1,0 +1,55 @@
+a, a:visited {
+    text-decoration: none;
+    color: #666;
+}
+#user-info-menu {
+    width: 100px;
+    padding-top: 12px;
+    padding-bottom: 8px;
+    position: absolute;
+    right: 10%;
+    top: 100%;
+
+    background-color: rgb(255, 251, 240);
+    border: 1px solid rgba(235, 181, 48, 1);
+    border-radius: 0px 0px 6px 6px;
+}
+#user-info-menu > .row {
+    height:26px;
+    width: 100%;
+
+    color: #666;
+
+    font-family: 'STHeitiSC-Light', 'Heiti SC Light', 'Heiti SC', serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size: 13px;
+
+    text-align: center;
+    line-height: 26px;
+    cursor: pointer;
+}
+#user-info-menu > .row:hover {
+    background-color: #E0F7FA;
+}
+
+/*#user-info-menu::before {*/
+    /*content: ' ';*/
+    /*display: block;*/
+    /*background-color: white;*/
+    /*width: 1rem;*/
+    /*height: 1rem;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 1rem;*/
+    /*border-top: 2px solid hsl(0, 1%, 71%);*/
+    /*border-left: 2px solid hsl(0, 1%, 71%);*/
+    /*-webkit-transform: rotate(45deg);*/
+    /*transform: rotate(45deg);*/
+    /*top: -.6rem;*/
+/*}*/
+
+#user-info-menu > .row a {
+    display: inline-block;
+    width: 100%;
+}

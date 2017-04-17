@@ -1,0 +1,227 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#backpack-window {
+    width: 36.1rem;
+    position: absolute;
+    right: 5px;
+    top: 45px;
+
+    background: #FFFBF1;
+    border: 1px solid #EBB530;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.30);
+    border-radius: 6px;
+}
+
+#backpack-window .header-wrapper {
+    height: 40px;
+    position: relative;
+
+    background: #F2EFE6;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.20);
+    border-radius: 6px 6px 0px 0px;
+}
+
+#backpack-window .header-wrapper .circle {
+    position: absolute;
+    height: 100%;
+
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+
+    margin: 0 10px;
+}
+
+#backpack-window .header-wrapper .circle div {
+    margin: 0 5px;
+
+    background: url('https://o44j7l4g3.qnssl.com/program/ide/ide-icons.svg') no-repeat -142px -345px;
+    width: 33px;
+    height: 29px;
+}
+
+#backpack-window .header-wrapper header {
+    background: url('https://o44j7l4g3.qnssl.com/program/ide/ide-icons.svg') no-repeat -181px -349px;
+    width: 76px;
+    height: 23px;
+}
+
+#backpack-close-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 30px;
+
+    float: right;
+    cursor: pointer;
+}
+
+#backpack-close-btn div {
+    background: url('https://o44j7l4g3.qnssl.com/program/ide/ide-icons.svg') no-repeat -271px -349px;
+    width: 19px;
+    height: 19px;
+}
+
+.backpack-wrapper {
+    height: 30rem;
+
+    margin: 0.1rem 0;
+    overflow-y: auto;
+    padding-top: 1rem;
+}
+
+.backpack-wrapper svg {
+    width: 100%;
+    margin: 15px 0;
+}
+
+#backpack-window .item {
+    position: relative;
+    width: 90px;
+    height: 105px;
+
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    flex-direction: column;;
+
+    margin: 0.5rem;
+
+    -webkit-transition: background-color 300ms;
+    -moz-transition: background-color 300ms;
+    -ms-transition: background-color 300ms;
+    -o-transition: background-color 300ms;
+    transition: background-color 300ms;
+
+    background: #FEF0C6;
+    border-radius: 9px;
+
+    cursor: pointer;
+}
+
+.backpack-ai, .backpack-human {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin: 0 15px;
+}
+
+.backpack-ai {
+    padding-bottom: 15px;
+    border-bottom: 3px dashed #EDEAE1;
+}
+
+.backpack-human {
+    margin-top: 15px;
+}
+
+#backpack-window .item-close-btn {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-weight: bolder;
+
+    color: hsl(0, 0%, 100%);
+    font-size: 1.25rem;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 50%;
+    display: none;
+    cursor: pointer;
+}
+
+#backpack-window .item:hover {
+    background: #81D4FA;
+    border-radius: 9px;
+}
+
+#backpack-window .item:active {
+    background: #4FADFF;
+    border: 1px solid #3F8ACC;
+    border-radius: 9px;
+}
+
+#backpack-window .item:hover .item-close-btn {
+    display: block;
+}
+
+#backpack-window .item .item-close-btn:hover {
+    color: rgb(0, 140, 255);
+    display: inline-block;
+}
+
+#backpack-window .item img {
+    max-width: 75px;
+    max-height: 70px;
+}
+
+.item > div {
+    width: 70px;
+    height: 75px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#backpack-window .item .item-name {
+    font-size: 14px;
+    color: #333;
+}
+
+.item-author, .item-name {
+    width: 90%;
+    text-align: center;
+
+    font-family: STHeitiSC-Medium, serif;
+    overflow: hidden;
+
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item-author {
+    font-size: 12px;
+    color: #666666;
+}
+
+li {
+    list-style: none;
+}
+
+.context-menu {
+    position: absolute;
+    text-align: center;
+    width: 5rem;
+    background-color: rgb(214, 214, 214);
+    color: hsl(0, 0%, 33%);
+    display: none;
+}
+
+.context-menu li {
+    cursor: pointer;
+    height: 1.6rem;
+    padding: 0 .25rem;
+    line-height: 1.6rem;
+    font-size: .875rem;
+}
+
+.context-menu li:hover {
+    background-color: hsl(187, 55%, 47%);
+    color: white;
+}
